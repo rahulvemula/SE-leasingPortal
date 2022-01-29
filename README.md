@@ -13,3 +13,8 @@ The idea is to provide a web-application to lease out the apartments where custo
 ## Tech stack
 - Golang
 - React
+
+## Branch details
+
+- backend
+- This branch is to store the backend logic in go-lang
