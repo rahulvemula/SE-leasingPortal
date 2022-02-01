@@ -1,14 +1,19 @@
 package main
 
 import (
-	"github.com/mitul/easy-lease/pkg/config"
-	"gorm.io/gorm"
+	"log"
+	"net/http"
+
+	"github.com/common/easy-lease/pkg/routes"
+	"github.com/gorilla/mux"
 )
 
-var db *gorm.DB
-
 func main() {
+	r := mux.NewRouter()
 
-	config.Connect()
-	db = config.GetDB()
+	routes.RegisterUserRoutes(r)
+
+	http.Handle("/", r)
+	log.Fatal(http.ListenAndServe("localhost:9010", r))
+
 }
