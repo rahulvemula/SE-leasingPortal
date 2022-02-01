@@ -14,6 +14,17 @@ var (
 	db *gorm.DB
 )
 
+func ConnectTest() {
+	dsn := "easylease:Udiop#882@tcp(db4free.net:3306)/easylease?charset=utf8mb4&parseTime=True&loc=Local"
+
+	d, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+
+	if err != nil {
+		panic(err)
+	}
+	db = d
+}
+
 func Connect() {
 	nerr := godotenv.Load()
 	if nerr != nil {
