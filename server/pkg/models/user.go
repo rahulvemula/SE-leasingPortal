@@ -15,7 +15,7 @@ type User struct {
 }
 
 func init() {
-	config.ConnectTest()
+	config.ConnectSqlite()
 	db = config.GetDB()
 	db.AutoMigrate(&User{})
 }
@@ -51,8 +51,9 @@ func GetUserByName(name string) (*User, *gorm.DB) {
 	return &getUser, db
 }
 
-func DeleteUser(ID int64) User {
+func DeleteUser(ID int64) *User {
 	var user User
-	db.Where("ID=?", ID).Delete(user)
-	return user
+	db.First(&user, ID)
+	db.Delete(&User{}, ID)
+	return &user
 }
