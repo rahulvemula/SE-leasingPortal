@@ -1,6 +1,9 @@
+import Header from "./Header";
+
 function Filters() {
     return (
         <>
+        <Header></Header><br/>
             <section className="ftco-section ftco-no-pb">
                 <div className="container">
                     <div className="row">

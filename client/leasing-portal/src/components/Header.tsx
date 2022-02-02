@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 
 function Header() {
     return (
@@ -12,11 +13,25 @@ function Header() {
                     <div className="collapse navbar-collapse" id="ftco-nav">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item active">
-                                <a href="https://preview.colorlib.com/theme/findstate/index.html"
-                                    className="nav-link">Home</a></li>
+                                <Link className="nav-link" to="/">Home</Link>
+                            </li>
+
                             <li className="nav-item">
+                                <Link className="nav-link" to="/listing">Listing</Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/complaints">Complaint</Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/profile">My Account</Link>
+                            </li>
+
+                            {/* <li className="nav-item">
                                 <a href="https://preview.colorlib.com/theme/findstate/about.html"
-                                    className="nav-link">About</a></li>
+                                    className="nav-link">About</a>
+                                    </li>
                             <li className="nav-item">
                                 <a href="https://preview.colorlib.com/theme/findstate/services.html"
                                     className="nav-link">Services</a></li>
@@ -31,7 +46,7 @@ function Header() {
                                     className="nav-link">Blog</a></li>
                             <li className="nav-item">
                                 <a href="https://preview.colorlib.com/theme/findstate/contact.html"
-                                    className="nav-link">Contact</a></li>
+                                    className="nav-link">Contact</a></li> */}
                         </ul>
                     </div>
                 </div>
