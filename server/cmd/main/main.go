@@ -13,6 +13,7 @@ func main() {
 
 	routes.RegisterUserRoutes(r)
 	routes.RegisterLeaseRoutes(r)
+	routes.RegisterApartmentRoutes(r)
 
 	http.Handle("/", r)
 	log.Fatal(http.ListenAndServe("localhost:9010", r))
