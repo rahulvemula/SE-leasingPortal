@@ -5,7 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var db *gorm.DB
+var userdb *gorm.DB
 
 type User struct {
 	gorm.Model
@@ -16,44 +16,44 @@ type User struct {
 
 func init() {
 	config.ConnectSqlite()
-	db = config.GetDB()
-	db.AutoMigrate(&User{})
+	userdb = config.GetDB()
+	userdb.AutoMigrate(&User{})
 }
 
 func (u *User) CreateUser() *User {
-	//db.NewRecord(b)
+	//userdb.NewRecord(b)
 
-	db.Create(&u)
+	userdb.Create(&u)
 	return u
 }
 
 func GetAllUsers() []User {
 	var Users []User
-	db.Find(&Users)
+	userdb.Find(&Users)
 	return Users
 }
 
 func GetUserByEmail(email string) (*User, *gorm.DB) {
 	var getUser User
-	db := db.Where("Email=?", email).Find(&getUser)
-	return &getUser, db
+	userdb := userdb.Where("Email=?", email).Find(&getUser)
+	return &getUser, userdb
 }
 
 func GetUserById(Id int64) (*User, *gorm.DB) {
 	var getUser User
-	db := db.Where("ID=?", Id).Find(&getUser)
-	return &getUser, db
+	userdb := userdb.Where("ID=?", Id).Find(&getUser)
+	return &getUser, userdb
 }
 
 func GetUserByName(name string) (*User, *gorm.DB) {
 	var getUser User
-	db := db.Where("Name=?", name).Find(&getUser)
-	return &getUser, db
+	userdb := userdb.Where("Name=?", name).Find(&getUser)
+	return &getUser, userdb
 }
 
 func DeleteUser(ID int64) *User {
 	var user User
-	db.First(&user, ID)
-	db.Delete(&User{}, ID)
+	userdb.First(&user, ID)
+	userdb.Delete(&User{}, ID)
 	return &user
 }
