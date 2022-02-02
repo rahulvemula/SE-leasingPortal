@@ -1,10 +1,16 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Filters from './components/Filters';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
+      <Header></Header>
+      <Hero></Hero>
+      <Filters></Filters>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
