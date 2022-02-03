@@ -11,7 +11,7 @@ function Hero() {
                                 <h1 className="mb-4"><strong>Find Rentals</strong> <br />That Save You Money</h1>
                             </div>
                             <div className="mouse">
-                                <a href="#" className="mouse-icon">
+                                <a href="#properties" className="mouse-icon">
                                     <div className="mouse-wheel"><i className="bi bi-caret-down-fill"></i></div>
                                 </a>
                             </div>
