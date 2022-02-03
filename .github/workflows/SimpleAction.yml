@@ -1,0 +1,13 @@
+name: Simple Action
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  SimpleAction:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Simple action echoing!!
+        run: echo "Hey we are running a simple action"
