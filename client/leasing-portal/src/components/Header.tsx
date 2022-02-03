@@ -7,7 +7,7 @@ function Header() {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
                 <div className="container">
-                    <h1 className="navbar-brand">Easy Lease</h1>
+                    <h1 className="navbar-brand"><strong>HOUS.</strong></h1>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                         aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="oi oi-menu"></span> Menu

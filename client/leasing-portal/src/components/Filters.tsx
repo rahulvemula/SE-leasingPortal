@@ -15,7 +15,7 @@ function Filters() {
                                             <div className="form-group">
                                                 <label htmlFor="#">Location</label>
                                                 <div className="form-field">
-                                                    <div className="icon"><span className="ion-ios-search"></span></div>
+                                                    <div className="icon"><i className="bi bi-caret-down-fill"></i></div>
                                                     <input type="text" className="form-control" placeholder="City/Locality Name" />
                                                 </div>
                                             </div>
@@ -25,7 +25,7 @@ function Filters() {
                                                 <label htmlFor="#">Property Type</label>
                                                 <div className="form-field">
                                                     <div className="select-wrap">
-                                                        <div className="icon"><span className="ion-ios-arrow-down"></span></div>
+                                                        <div className="icon"><i className="bi bi-caret-down-fill"></i></div>
                                                         <select name="" id="" className="form-control">
                                                             <option value="">Type</option>
                                                             <option value="">Commercial</option>
@@ -44,7 +44,7 @@ function Filters() {
                                                 <label htmlFor="#">Property Status</label>
                                                 <div className="form-field">
                                                     <div className="select-wrap">
-                                                        <div className="icon"><span className="ion-ios-arrow-down"></span></div>
+                                                        <div className="icon"><i className="bi bi-caret-down-fill"></i></div>
                                                         <select name="" id="" className="form-control">
                                                             <option value="">Type</option>
                                                             <option value="">Rent</option>
@@ -59,7 +59,7 @@ function Filters() {
                                                 <label htmlFor="#">Price Limit</label>
                                                 <div className="form-field">
                                                     <div className="select-wrap">
-                                                        <div className="icon"><span className="ion-ios-arrow-down"></span></div>
+                                                        <div className="icon"><i className="bi bi-caret-down-fill"></i></div>
                                                         <select name="" id="" className="form-control">
                                                             <option value="">$5,000</option>
                                                             <option value="">$10,000</option>
