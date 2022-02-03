@@ -1,5 +1,8 @@
+import {Link} from 'react-router-dom';
 
 function Header() {
+    // To-Do: toggle this
+    let isLoggedIn = true;
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -12,26 +15,29 @@ function Header() {
                     <div className="collapse navbar-collapse" id="ftco-nav">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item active">
-                                <a href="https://preview.colorlib.com/theme/findstate/index.html"
-                                    className="nav-link">Home</a></li>
+                                <Link className="nav-link" to="/">Home</Link>
+                            </li>
+
+                            {isLoggedIn ?
+                            <>
                             <li className="nav-item">
-                                <a href="https://preview.colorlib.com/theme/findstate/about.html"
-                                    className="nav-link">About</a></li>
+                                <Link className="nav-link" to="/support">Support</Link>
+                            </li>
+
                             <li className="nav-item">
-                                <a href="https://preview.colorlib.com/theme/findstate/services.html"
-                                    className="nav-link">Services</a></li>
-                            <li className="nav-item">
-                                <a href="https://preview.colorlib.com/theme/findstate/agent.html"
-                                    className="nav-link">Agent</a></li>
-                            <li className="nav-item">
-                                <a href="https://preview.colorlib.com/theme/findstate/properties.html"
-                                    className="nav-link">Listing</a></li>
-                            <li className="nav-item">
-                                <a href="https://preview.colorlib.com/theme/findstate/blog.html"
-                                    className="nav-link">Blog</a></li>
-                            <li className="nav-item">
-                                <a href="https://preview.colorlib.com/theme/findstate/contact.html"
-                                    className="nav-link">Contact</a></li>
+                                <Link className="nav-link" to="/register">My Account</Link>
+                            </li> </> :
+
+                            <>
+                                <li className="nav-item">
+                                    <span className="nav-link">Login</span>
+                                </li> 
+
+                                <li className="nav-item">
+                                <span className="nav-link">Register</span>
+                                </li>
+                            
+                            </>}
                         </ul>
                     </div>
                 </div>
