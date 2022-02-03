@@ -14,6 +14,7 @@ func main() {
 	routes.RegisterUserRoutes(r)
 	routes.RegisterLeaseRoutes(r)
 	routes.RegisterApartmentRoutes(r)
+	routes.RegisterListingRoutes(r)
 
 	http.Handle("/", r)
 	log.Fatal(http.ListenAndServe("localhost:9010", r))
