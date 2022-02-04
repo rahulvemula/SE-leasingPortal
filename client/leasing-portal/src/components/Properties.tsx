@@ -21,9 +21,9 @@ function Properties() {
               </div>
               <div className="text">
                 <h3>
-                  <a href="#">10 Property Listing</a>
+                  <a href="/appts">10 Property Listing</a>
                 </h3>
-                <a href="#" className="btn-link">
+                <a href="/appts" className="btn-link">
                   <span>See All Listings{" "}<i className="bi bi-arrow-right-circle-fill"></i></span>
                 </a>
               </div>
