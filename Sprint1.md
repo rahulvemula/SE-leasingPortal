@@ -20,7 +20,7 @@ The idea is to provide a web-application to lease out the apartments where custo
 
 ## Backend Tasks achieved - (Go-lang)
 - Created API's for Lease CRUD operations
-- Created API's for User Login/Registration CRUD operations
+- Created API's for User Registration CRUD operations
 - Created API's for Apartment CRUD operations
 - Created API'S for Listing Lease CRUD operations
 
@@ -85,4 +85,64 @@ The idea is to provide a web-application to lease out the apartments where custo
    ```
   ### DELETE
   - [http://localhost:9010/lease/{id}](http://localhost:9010/lease/{leaseId})
+</details>
+<details>
+  <summary>Apartment API</summary>
+  
+  ### GET
+  - [http://localhost:9010/apartment/ ](http://localhost:9010/apartment/)
+  ### POST
+  - [http://localhost:9010/apartment/](http://localhost:9010/apartment/)
+  * Payload
+  ``` json
+    {
+        "name":"",
+        "address":"3800 SW",
+        "amenities": "counter top, new appliances"
+    }
+   ```
+  ### PUT
+  - [http://localhost:9010/apartment/{apartmentId}](http://localhost:9010/)
+  * Payload
+  ``` json
+   {
+        "name":"",
+        "address":"3800 SW",
+        "amenities": "counter top, new appliances"
+    }
+   ```
+  ### DELETE
+  - [http://localhost:9010/apartment/{id}](http://localhost:9010/apartment/{apartmentId})
+</details>
+<details>
+  <summary>Listing API</summary>
+  
+  ### GET
+  - [http://localhost:9010/listing/ ](http://localhost:9010/listing/)
+  ### POST
+  - [http://localhost:9010/listing/](http://localhost:9010/listing/)
+  * Payload
+  ``` json
+    {
+        "listingType":"bedroom",
+        "houseType":"1",
+        "rent": 500,
+        "userId": 1,
+        "isleased": true
+    }
+   ```
+  ### PUT
+  - [http://localhost:9010/listing/{listingId}](http://localhost:9010/)
+  * Payload
+  ``` json
+   {
+        "listingType":"bedroom",
+        "houseType":"1",
+        "rent": 500,
+        "userId": 1,
+        "isleased": true
+    }
+   ```
+  ### DELETE
+  - [http://localhost:9010/listing/{id}](http://localhost:9010/listing/{listingId})
 </details>
