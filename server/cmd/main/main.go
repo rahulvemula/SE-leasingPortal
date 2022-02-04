@@ -8,8 +8,19 @@ import (
 	"github.com/gorilla/mux"
 )
 
+func Add(a int, b int) int {
+	return a + b
+}
+
+func RootEndPoint(response http.ResponseWriter, request *http.Request) {
+	response.WriteHeader(200)
+	response.Write([]byte("Hello World"))
+}
+
 func main() {
 	r := mux.NewRouter()
+
+	r.HandleFunc("/", RootEndPoint).Methods("GET")
 
 	routes.RegisterUserRoutes(r)
 	routes.RegisterLeaseRoutes(r)
