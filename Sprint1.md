@@ -13,9 +13,10 @@ The idea is to provide a web-application to lease out the apartments where custo
 
 ## UI Tasks achieved - (React js)
 - Performed the initial setup required for the frontend
-- Added the Home page and listings page
-- Provision to create a dummy lease for now for the user
-- Provision to show the listing of leases available
+- Added home page to show all available societies
+- Added listings page to show houses available at a particular society
+- Provision to show a dummy lease confirmation for now
+- Provision to show the listings of properties available
 
 ## Backend Tasks achieved - (Go-lang)
 - Created API's for Lease CRUD operations
