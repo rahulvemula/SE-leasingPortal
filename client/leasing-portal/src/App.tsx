@@ -5,7 +5,6 @@ import Listings from "./components/Listings";
 import Properties from "./components/Properties";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
-import './App.css';
 import ApptListing from './pages/ApptListing';
 import Done from './pages/done';
 //import 'bootstrap/dist/css/bootstrap.min.css';
