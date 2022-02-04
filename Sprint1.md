@@ -8,15 +8,15 @@ The idea is to provide a web-application to lease out the apartments where custo
 - [Easy-Lease Repo Link](https://github.com/rahulvemula/SE-leasingPortal) 
 - [Discussions link on git](https://github.com/rahulvemula/SE-leasingPortal/discussions)
 - [Actions link on git](https://github.com/rahulvemula/SE-leasingPortal/actions)
-- [Sprint 1 User stories progress(JIRA) board link](https://github.com/rahulvemula/SE-leasingPortal/projects/1)
+- [Sprint 1 User stories progress board link](https://github.com/rahulvemula/SE-leasingPortal/projects/1)
 - [All user stories link](https://github.com/rahulvemula/SE-leasingPortal/issues)
 
 ## UI Tasks achieved - (React js)
 - Performed the initial setup required for the frontend
-- Added the Registration screen for the user
-- Added the Login screen for the user
-- Provision to create a dummy lease for now for the user
-- Provision to show the listing of leases for the user
+- Added home page to show all available societies
+- Added listings page to show houses available at a particular society
+- Provision to show a dummy lease confirmation for now
+- Provision to show the listings of properties available
 
 ## Backend Tasks achieved - (Go-lang)
 - Created API's for Lease CRUD operations
