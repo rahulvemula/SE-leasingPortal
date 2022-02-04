@@ -21,11 +21,10 @@ function Properties() {
               </div>
               <div className="text">
                 <h3>
-                  <a href="#">100 Property Listing</a>
+                  <a href="#">10 Property Listing</a>
                 </h3>
                 <a href="#" className="btn-link">
-                  See All Listing{" "}
-                  <span className="ion-ios-arrow-round-forward"></span>
+                  <span>See All Listings{" "}<i className="bi bi-arrow-right-circle-fill"></i></span>
                 </a>
               </div>
             </div>
