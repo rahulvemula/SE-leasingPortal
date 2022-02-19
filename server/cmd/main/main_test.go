@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -26,6 +25,6 @@ func TestRootEndPoint(t *testing.T) {
 	response := httptest.NewRecorder()
 	Router().ServeHTTP(response, request)
 	assert.Equal(t, 200, response.Code, "OK response is expected")
-	fmt.Println(response.Body)
+	//fmt.Println(response.Body)
 	//assert.Equal(t, "Hello World", response.Body.String(), "Hello world message is expected")
 }
