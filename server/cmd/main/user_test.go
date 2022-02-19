@@ -49,12 +49,13 @@ func TestGetUserByEmail(t *testing.T) {
 	assert.Equal(t, 200, response.Code, "OK response is expected")
 	err := json.Unmarshal([]byte(response.Body.Bytes()), &user)
 
-	fmt.Println("response is: ", response.Body.String())
+	//fmt.Println("response is: ", response.Body.String())
 	if err != nil {
 		fmt.Println("err is ", err)
 	}
 
 	if (user != models.User{}) {
+		//fmt.Println(user.Email)
 		assert.Equal(t, "vbethamsetty@ufl.edu", user.Email, "Emails should be matching")
 	}
 }
