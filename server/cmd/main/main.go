@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/common/easy-lease/pkg/routes"
 	"github.com/gorilla/handlers"
@@ -29,12 +30,13 @@ func main() {
 
 	r.HandleFunc("/", RootEndPoint).Methods("GET")
 
+	port := os.Getenv("PORT")
 	routes.RegisterUserRoutes(r)
 	routes.RegisterLeaseRoutes(r)
 	routes.RegisterApartmentRoutes(r)
 	routes.RegisterListingRoutes(r)
 
 	http.Handle("/", r)
-	log.Fatal(http.ListenAndServe("localhost:9010", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
-
+  
+	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
 }
