@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/common/easy-lease/pkg/routes"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -20,6 +21,12 @@ func RootEndPoint(response http.ResponseWriter, request *http.Request) {
 func main() {
 	r := mux.NewRouter()
 
+	corsObj := handlers.AllowedOrigins([]string{"http://localhost:3000"})
+	headersOk := handlers.AllowedHeaders([]string{"accept", "origin", "X-Requested-With", "Content-Type", "Authorization"})
+	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "PUT", "POST", "DELETE", "OPTIONS", "PATCH"})
+	allowCreds := handlers.AllowCredentials()
+	allowOptions := handlers.OptionStatusCode(204)
+
 	r.HandleFunc("/", RootEndPoint).Methods("GET")
 
 	routes.RegisterUserRoutes(r)
@@ -28,6 +35,6 @@ func main() {
 	routes.RegisterListingRoutes(r)
 
 	http.Handle("/", r)
-	log.Fatal(http.ListenAndServe("localhost:9010", r))
+	log.Fatal(http.ListenAndServe("localhost:9010", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
 
 }
