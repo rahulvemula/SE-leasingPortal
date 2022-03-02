@@ -37,7 +37,7 @@
    }
    ```
   ### PUT
-  - [https://murmuring-earth-87031.herokuapp.com/users/](https://murmuring-earth-87031.herokuapp.com/user/)
+  - [https://murmuring-earth-87031.herokuapp.com/users/](https://murmuring-earth-87031.herokuapp.com/users/{userId})
   * Payload
   ``` json
    {
