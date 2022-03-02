@@ -7,8 +7,8 @@ import (
 )
 
 var RegisterLeaseRoutes = func(router *mux.Router) {
-	router.HandleFunc("/lease/", controllers.CreateLease).Methods("POST")
-	router.HandleFunc("/lease/", controllers.GetLease).Methods("GET")
+	router.HandleFunc("/lease", controllers.CreateLease).Methods("POST")
+	router.HandleFunc("/lease", controllers.GetLease).Methods("GET")
 	router.HandleFunc("/lease/{leaseId}", controllers.GetLeaseById).Methods("GET")
 	router.HandleFunc("/lease/{leaseId}", controllers.UpdateLease).Methods("PUT")
 	router.HandleFunc("/lease/{leaseId}", controllers.DeleteLease).Methods("DELETE")
