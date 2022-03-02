@@ -6,9 +6,9 @@ import (
 )
 
 var RegisterApartmentRoutes = func(router *mux.Router) {
-	router.HandleFunc("/apartment/", controllers.CreateApartment).Methods("POST")
-	router.HandleFunc("/apartment/", controllers.GetApartment).Methods("GET")
-	router.HandleFunc("/apartment/{apartmentId}", controllers.GetApartmentById).Methods("GET")
-	router.HandleFunc("/apartment/{apartmentId}", controllers.UpdateApartment).Methods("PUT")
-	router.HandleFunc("/apartment/{apartmentId}", controllers.DeleteApartment).Methods("DELETE")
+	router.HandleFunc("/apartments", controllers.CreateApartment).Methods("POST")
+	router.HandleFunc("/apartments", controllers.GetApartment).Methods("GET")
+	router.HandleFunc("/apartments/{apartmentId}", controllers.GetApartmentById).Methods("GET")
+	router.HandleFunc("/apartments/{apartmentId}", controllers.UpdateApartment).Methods("PUT")
+	router.HandleFunc("/apartments/{apartmentId}", controllers.DeleteApartment).Methods("DELETE")
 }
