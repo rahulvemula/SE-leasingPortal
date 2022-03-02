@@ -7,10 +7,10 @@ import (
 )
 
 var RegisterUserRoutes = func(router *mux.Router) {
-	router.HandleFunc("/user", controllers.CreateUser).Methods("POST")
-	router.HandleFunc("/user", controllers.GetUser).Methods("GET")
+	router.HandleFunc("/users", controllers.CreateUser).Methods("POST")
+	router.HandleFunc("/users", controllers.GetUser).Methods("GET")
 	//router.HandleFunc("/book/{bookId}", controllers.GetBookById).Methods("GET")
-	router.HandleFunc("/user/{userId}", controllers.UpdateUser).Methods("PUT")
-	router.HandleFunc("/user/{userId}", controllers.DeleteUser).Methods("DELETE")
-	router.HandleFunc("/user/{email}", controllers.GetUserByEmail).Methods("GET")
+	router.HandleFunc("/users/{userId}", controllers.UpdateUser).Methods("PUT")
+	router.HandleFunc("/users/{userId}", controllers.DeleteUser).Methods("DELETE")
+	router.HandleFunc("/users/{email}", controllers.GetUserByEmail).Methods("GET")
 }
