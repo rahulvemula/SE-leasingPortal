@@ -11,6 +11,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import Upload from './components/UploadImage/UploadImage';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
