@@ -23,11 +23,11 @@
   <summary>User API</summary>
   
   ### GET
-  - [https://murmuring-earth-87031.herokuapp.com/user/ ](https://murmuring-earth-87031.herokuapp.com/user/)
+  - [https://murmuring-earth-87031.herokuapp.com/users ](https://murmuring-earth-87031.herokuapp.com/user/)
    ### GET USER BY EMAIL
-  - [https://murmuring-earth-87031.herokuapp.com/user/{email}](https://murmuring-earth-87031.herokuapp.com/user/{email})
+  - [https://murmuring-earth-87031.herokuapp.com/users/{email}](https://murmuring-earth-87031.herokuapp.com/user/{email})
   ### POST
-  - [https://murmuring-earth-87031.herokuapp.com/user/](https://murmuring-earth-87031.herokuapp.com/user/)
+  - [https://murmuring-earth-87031.herokuapp.com/users/](https://murmuring-earth-87031.herokuapp.com/user/)
   * Payload
   ``` json
    {
@@ -37,7 +37,7 @@
    }
    ```
   ### PUT
-  - [https://murmuring-earth-87031.herokuapp.com/user/](https://murmuring-earth-87031.herokuapp.com/user/)
+  - [https://murmuring-earth-87031.herokuapp.com/users/](https://murmuring-earth-87031.herokuapp.com/user/)
   * Payload
   ``` json
    {
@@ -47,15 +47,15 @@
    }
    ```
   ### DELETE
-  - [https://murmuring-earth-87031.herokuapp.com/user/{id}](https://murmuring-earth-87031.herokuapp.com/user/{id})
+  - [https://murmuring-earth-87031.herokuapp.com/users/{id}](https://murmuring-earth-87031.herokuapp.com/user/{id})
 </details>
 <details>
   <summary>Lease API</summary>
   
   ### GET
-  - [https://murmuring-earth-87031.herokuapp.com/lease/ ](https://murmuring-earth-87031.herokuapp.com/lease/)
+  - [https://murmuring-earth-87031.herokuapp.com/leases ](https://murmuring-earth-87031.herokuapp.com/lease/)
   ### POST
-  - [https://murmuring-earth-87031.herokuapp.com/lease/](https://murmuring-earth-87031.herokuapp.com/lease/)
+  - [https://murmuring-earth-87031.herokuapp.com/leases](https://murmuring-earth-87031.herokuapp.com/lease/)
   * Payload
   ``` json
     {
@@ -66,7 +66,7 @@
     }
    ```
   ### PUT
-  - [https://murmuring-earth-87031.herokuapp.com/lease/{leaseId}](https://murmuring-earth-87031.herokuapp.com/)
+  - [https://murmuring-earth-87031.herokuapp.com/leases/{leaseId}](https://murmuring-earth-87031.herokuapp.com/)
   * Payload
   ``` json
    {
@@ -77,15 +77,15 @@
     }
    ```
   ### DELETE
-  - [https://murmuring-earth-87031.herokuapp.com/lease/{id}](https://murmuring-earth-87031.herokuapp.com/lease/{leaseId})
+  - [https://murmuring-earth-87031.herokuapp.com/leases/{id}](https://murmuring-earth-87031.herokuapp.com/lease/{leaseId})
 </details>
 <details>
   <summary>Apartment API</summary>
   
   ### GET
-  - [https://murmuring-earth-87031.herokuapp.com/apartment/ ](https://murmuring-earth-87031.herokuapp.com/apartment/)
+  - [https://murmuring-earth-87031.herokuapp.com/apartments ](https://murmuring-earth-87031.herokuapp.com/apartment/)
   ### POST
-  - [https://murmuring-earth-87031.herokuapp.com/apartment/](https://murmuring-earth-87031.herokuapp.com/apartment/)
+  - [https://murmuring-earth-87031.herokuapp.com/apartments](https://murmuring-earth-87031.herokuapp.com/apartment/)
   * Payload
   ``` json
     {
@@ -95,7 +95,7 @@
     }
    ```
   ### PUT
-  - [https://murmuring-earth-87031.herokuapp.com/apartment/{apartmentId}](https://murmuring-earth-87031.herokuapp.com/)
+  - [https://murmuring-earth-87031.herokuapp.com/apartments/{apartmentId}](https://murmuring-earth-87031.herokuapp.com/)
   * Payload
   ``` json
    {
@@ -105,15 +105,15 @@
     }
    ```
   ### DELETE
-  - [https://murmuring-earth-87031.herokuapp.com/apartment/{id}](https://murmuring-earth-87031.herokuapp.com/apartment/{apartmentId})
+  - [https://murmuring-earth-87031.herokuapp.com/apartments/{id}](https://murmuring-earth-87031.herokuapp.com/apartment/{apartmentId})
 </details>
 <details>
   <summary>Listing API</summary>
   
   ### GET
-  - [https://murmuring-earth-87031.herokuapp.com/listing/ ](https://murmuring-earth-87031.herokuapp.com/listing/)
+  - [https://murmuring-earth-87031.herokuapp.com/listings ](https://murmuring-earth-87031.herokuapp.com/listing/)
   ### POST
-  - [https://murmuring-earth-87031.herokuapp.com/listing/](https://murmuring-earth-87031.herokuapp.com/listing/)
+  - [https://murmuring-earth-87031.herokuapp.com/listings](https://murmuring-earth-87031.herokuapp.com/listing/)
   * Payload
   ``` json
     {
@@ -125,7 +125,7 @@
     }
    ```
   ### PUT
-  - [https://murmuring-earth-87031.herokuapp.com/listing/{listingId}](https://murmuring-earth-87031.herokuapp.com/)
+  - [https://murmuring-earth-87031.herokuapp.com/listings/{listingId}](https://murmuring-earth-87031.herokuapp.com/)
   * Payload
   ``` json
    {
@@ -137,5 +137,5 @@
     }
    ```
   ### DELETE
-  - [https://murmuring-earth-87031.herokuapp.com/listing/{id}](https://murmuring-earth-87031.herokuapp.com/listing/{listingId})
+  - [https://murmuring-earth-87031.herokuapp.com/listings/{id}](https://murmuring-earth-87031.herokuapp.com/listing/{listingId})
 </details>
