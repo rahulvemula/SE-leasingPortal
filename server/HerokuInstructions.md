@@ -23,11 +23,11 @@
   <summary>User API</summary>
   
   ### GET
-  - [http://localhost:9010/user/ ](http://localhost:9010/user/)
+  - [https://murmuring-earth-87031.herokuapp.com/user/ ](https://murmuring-earth-87031.herokuapp.com/user/)
    ### GET USER BY EMAIL
-  - [http://localhost:9010/user/{email}](http://localhost:9010/user/{email})
+  - [https://murmuring-earth-87031.herokuapp.com/user/{email}](https://murmuring-earth-87031.herokuapp.com/user/{email})
   ### POST
-  - [http://localhost:9010/user/](http://localhost:9010/user/)
+  - [https://murmuring-earth-87031.herokuapp.com/user/](https://murmuring-earth-87031.herokuapp.com/user/)
   * Payload
   ``` json
    {
@@ -37,7 +37,7 @@
    }
    ```
   ### PUT
-  - [http://localhost:9010/user/](http://localhost:9010/user/)
+  - [https://murmuring-earth-87031.herokuapp.com/user/](https://murmuring-earth-87031.herokuapp.com/user/)
   * Payload
   ``` json
    {
@@ -47,15 +47,15 @@
    }
    ```
   ### DELETE
-  - [http://localhost:9010/user/{id}](http://localhost:9010/user/{id})
+  - [https://murmuring-earth-87031.herokuapp.com/user/{id}](https://murmuring-earth-87031.herokuapp.com/user/{id})
 </details>
 <details>
   <summary>Lease API</summary>
   
   ### GET
-  - [http://localhost:9010/lease/ ](http://localhost:9010/lease/)
+  - [https://murmuring-earth-87031.herokuapp.com/lease/ ](https://murmuring-earth-87031.herokuapp.com/lease/)
   ### POST
-  - [http://localhost:9010/lease/](http://localhost:9010/lease/)
+  - [https://murmuring-earth-87031.herokuapp.com/lease/](https://murmuring-earth-87031.herokuapp.com/lease/)
   * Payload
   ``` json
     {
@@ -66,7 +66,7 @@
     }
    ```
   ### PUT
-  - [http://localhost:9010/lease/{leaseId}](http://localhost:9010/)
+  - [https://murmuring-earth-87031.herokuapp.com/lease/{leaseId}](https://murmuring-earth-87031.herokuapp.com/)
   * Payload
   ``` json
    {
@@ -77,15 +77,15 @@
     }
    ```
   ### DELETE
-  - [http://localhost:9010/lease/{id}](http://localhost:9010/lease/{leaseId})
+  - [https://murmuring-earth-87031.herokuapp.com/lease/{id}](https://murmuring-earth-87031.herokuapp.com/lease/{leaseId})
 </details>
 <details>
   <summary>Apartment API</summary>
   
   ### GET
-  - [http://localhost:9010/apartment/ ](http://localhost:9010/apartment/)
+  - [https://murmuring-earth-87031.herokuapp.com/apartment/ ](https://murmuring-earth-87031.herokuapp.com/apartment/)
   ### POST
-  - [http://localhost:9010/apartment/](http://localhost:9010/apartment/)
+  - [https://murmuring-earth-87031.herokuapp.com/apartment/](https://murmuring-earth-87031.herokuapp.com/apartment/)
   * Payload
   ``` json
     {
@@ -95,7 +95,7 @@
     }
    ```
   ### PUT
-  - [http://localhost:9010/apartment/{apartmentId}](http://localhost:9010/)
+  - [https://murmuring-earth-87031.herokuapp.com/apartment/{apartmentId}](https://murmuring-earth-87031.herokuapp.com/)
   * Payload
   ``` json
    {
@@ -105,15 +105,15 @@
     }
    ```
   ### DELETE
-  - [http://localhost:9010/apartment/{id}](http://localhost:9010/apartment/{apartmentId})
+  - [https://murmuring-earth-87031.herokuapp.com/apartment/{id}](https://murmuring-earth-87031.herokuapp.com/apartment/{apartmentId})
 </details>
 <details>
   <summary>Listing API</summary>
   
   ### GET
-  - [http://localhost:9010/listing/ ](http://localhost:9010/listing/)
+  - [https://murmuring-earth-87031.herokuapp.com/listing/ ](https://murmuring-earth-87031.herokuapp.com/listing/)
   ### POST
-  - [http://localhost:9010/listing/](http://localhost:9010/listing/)
+  - [https://murmuring-earth-87031.herokuapp.com/listing/](https://murmuring-earth-87031.herokuapp.com/listing/)
   * Payload
   ``` json
     {
@@ -125,7 +125,7 @@
     }
    ```
   ### PUT
-  - [http://localhost:9010/listing/{listingId}](http://localhost:9010/)
+  - [https://murmuring-earth-87031.herokuapp.com/listing/{listingId}](https://murmuring-earth-87031.herokuapp.com/)
   * Payload
   ``` json
    {
@@ -137,5 +137,5 @@
     }
    ```
   ### DELETE
-  - [http://localhost:9010/listing/{id}](http://localhost:9010/listing/{listingId})
+  - [https://murmuring-earth-87031.herokuapp.com/listing/{id}](https://murmuring-earth-87031.herokuapp.com/listing/{listingId})
 </details>
