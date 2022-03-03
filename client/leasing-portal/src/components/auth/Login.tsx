@@ -1,37 +1,56 @@
 import React, { useState } from "react";
 import { Modal, ModalBody } from "reactstrap";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loginSuccessful } from "../../store/auth";
+import { updateUserData } from "../../store/userData";
 
 function Login() {
   const [modal, setModal] = React.useState(false);
+  const dispatch = useDispatch();
   const defaultData = {
     email: "",
     password: "",
   };
+  const mockUserData = {
+    name: "R",
+    email: "R",
+    username: "R"
+  }
   const [userData, setUserData] = useState(defaultData);
 
   // Toggle for Modal
   const toggle = () => setModal(!modal);
 
-  const authenticateUser = () => {};
+  const authenticateUser = () => {
+    dispatch(loginSuccessful());
+  };
   const updateEmail = (email: string) => {
     setUserData({ ...userData, email });
   };
   const updatePassword = (password: string) => {
     setUserData({ ...userData, password });
   };
+  const updateStateWithUserData = (userData: any) => {
+    dispatch(updateUserData(userData));
+  }
 
   //TO-DO: Add login api and handle success and failure cases
   const login = () => {
-    axios
-      .post("http://localhost:9010/user/", userData)
-      .then(() => {
-        authenticateUser();
-      })
-      .finally(() => {
-        setUserData(defaultData);
-        setModal(false);
-      });
+    // axios
+    //   .post("http://localhost:9010/user/", userData)
+    //   .then(() => {
+    //     authenticateUser();
+    //   })
+    //   .finally(() => {
+    //     setUserData(defaultData);
+    //     setModal(false);
+    //   });
+
+    authenticateUser();
+    updateStateWithUserData(mockUserData);
+    setUserData(defaultData);
+    setModal(false);
   };
 
   return (
