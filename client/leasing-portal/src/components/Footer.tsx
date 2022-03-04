@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer className="ftco-footer ftco-section">
@@ -68,11 +70,8 @@ function Footer() {
                     Story
                   </a>
                 </li>
-                <li>
-                  <a href="#">
-                    <span className="icon-long-arrow-right mr-2"><i className="bi bi-arrow-right-circle-fill"></i></span>Meet the
-                    team
-                  </a>
+                <li>      
+                <Link className="icon-long-arrow-right mr-2" to="/aboutus"><i className="bi bi-arrow-right-circle-fill"></i>About Us</Link>   
                 </li>
                 <li>
                   <a href="#">
