@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import ApptListing from './pages/ApptListing';
 import Done from './pages/done';
+import AboutUs from './components/AboutUs/AboutUs';
+
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
           <Route path="/support" element={<ApptListing />} />
           <Route path="/appts" element={<ApptListing />} />
           <Route path="/done" element={<Done />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
         <Footer />
       </BrowserRouter>
