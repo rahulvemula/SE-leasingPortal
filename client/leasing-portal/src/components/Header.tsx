@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
+import {logoutSuccessful} from '../store/auth';
+import  { useNavigate } from 'react-router-dom'
 
 function Header() {
   // To-Do: toggle this
   const isLoggedIn = useSelector((state: any) => state.isAuthenticated.value);
-  let registerUser = () => {
-    console.log("inside button");
-  };
+ 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const logout = () => {}
+  const logout = () => {
+    dispatch(logoutSuccessful());
+    navigate("./", {replace: true});
+  }
 
   return (
     <div>
@@ -52,12 +57,12 @@ function Header() {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/account">
+                    <Link id="my-account" className="nav-link" to="/account">
                       My Account
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <span className="nav-link" onClick={logout}>
+                    <span id="logout-button" className="nav-link" onClick={logout}>
                       Logout
                     </span>
                   </li>{" "}

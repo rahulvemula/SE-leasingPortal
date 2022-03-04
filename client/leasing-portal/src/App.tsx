@@ -13,6 +13,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 
 //import Account from "./pages/Account";
 import Upload from './components/UploadImage/UploadImage';
+import Account from "./pages/Accounts";
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,8 +47,12 @@ function App() {
             <Route path="/appts" element={<ApptListing />} />
             <Route path="/done" element={<Done />} />
             <Route path="/aboutus" element={<AboutUs />} />
+<<<<<<< HEAD
             <Route path="/upload" element={<Upload/>} />
             {/* <Route path="/account" element = {<Account/>} /> */}
+=======
+            <Route path="/account" element = {<Account/>} />
+>>>>>>> 95cc2ac (feat: add account page to show user details)
           </Routes>
           <Footer />
         </BrowserRouter>
