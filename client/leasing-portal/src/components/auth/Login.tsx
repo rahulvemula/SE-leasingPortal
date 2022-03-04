@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Modal, ModalBody } from "reactstrap";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -6,7 +6,7 @@ import { loginSuccessful } from "../../store/auth";
 import { updateUserData } from "../../store/userData";
 
 function Login() {
-  const [modal, setModal] = React.useState(false);
+  const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
   const defaultData = {
     email: "",
@@ -18,6 +18,9 @@ function Login() {
     username: "R"
   }
   const [userData, setUserData] = useState(defaultData);
+
+ 
+  let showSpinner = false;
 
   // Toggle for Modal
   const toggle = () => setModal(!modal);
@@ -35,8 +38,27 @@ function Login() {
     dispatch(updateUserData(userData));
   }
 
+
   //TO-DO: Add login api and handle success and failure cases
   const login = () => {
+    showSpinner = true;
+    
+    axios.get(`https://murmuring-earth-87031.herokuapp.com/users/${userData.email}`).then((res) => {
+      if(res.data.ID != 0) {
+        authenticateUser();
+        const userResponse = {name: res.data.Name, email: res.data.Email, password: res.data.Password};
+        updateStateWithUserData(userResponse);
+      } else {
+        // TO-DO: this needs to be handled in catch
+        alert('Auth failed'); 
+      }
+    }).finally(() => {
+      setModal(false);
+      showSpinner = false;
+    })
+
+
+
     // axios
     //   .post("http://localhost:9010/user/", userData)
     //   .then(() => {
@@ -47,15 +69,15 @@ function Login() {
     //     setModal(false);
     //   });
 
-    authenticateUser();
-    updateStateWithUserData(mockUserData);
-    setUserData(defaultData);
-    setModal(false);
+    // authenticateUser();
+    // updateStateWithUserData(mockUserData);
+    // setUserData(defaultData);
+    
   };
 
   return (
     <>
-      <span className="nav-link" onClick={toggle}>
+      <span id="login" className="nav-link" onClick={toggle}>
         Login
       </span>
 
@@ -67,7 +89,8 @@ function Login() {
           toggle={toggle}
           modalTransition={{ timeout: 2 }}
         >
-          <ModalBody>
+          <ModalBody id="login-form">
+           
             <div className="form-group">
               <label>Email address</label>
               <input
@@ -93,7 +116,13 @@ function Login() {
                 }}
               />
             </div>
-            <div className="text-center">
+            <div className="text-center"> {
+              showSpinner ?  
+              <button className="btn btn-primary" type="button" disabled>
+              <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+              &nbsp;Logging...
+            </button>
+              :
               <button
                 id="loginSubmit"
                 className="btn btn-primary"
@@ -101,7 +130,11 @@ function Login() {
               >
                 Login
               </button>
+              
+            }
+              
             </div>
+         
           </ModalBody>
         </Modal>
       </div>
