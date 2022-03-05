@@ -27,9 +27,11 @@
 - [All user stories link](https://github.com/rahulvemula/SE-leasingPortal/issues)
 
 
-## UI Demo
-[Link to video](https://www.youtube.com/watch?v=g1fCuswK1mo)
+## Sprint 2 Demo
+[Link to video](https://youtu.be/uIOmdBOGxIw)
 
+## Cypress automation tests Demo
+[Link to video](https://youtu.be/E7KT6BTbTKc)
 ## Backend Demo
 [Link to video](https://www.youtube.com/watch?v=71Yq5YIdw_A)
 
