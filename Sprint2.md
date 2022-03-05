@@ -36,7 +36,7 @@
 ## Screenshots for unit tests
 
 #### UI Components tests
-![](Screenshots/ComponentsUnitTests.png?raw=true "Title")
+![](Screenshots/ComponentsUnitTests.png)
 #### Go lang unit tests
 ![Alt text](Screenshots/GoLangUnitTests.png?raw=true "Title")
 
