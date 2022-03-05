@@ -41,7 +41,7 @@ function Account() {
                           <div className="row pt-1">
                             <div className="col-6 mb-3">
                               <h6 id="name">Name</h6>
-                              <p className="text-muted">{userData.email}</p>
+                              <p className="text-muted">{userData.name}</p>
                             </div>
                           </div>
 
