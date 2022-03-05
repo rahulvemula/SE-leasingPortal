@@ -35,8 +35,10 @@ func main() {
 	routes.RegisterLeaseRoutes(r)
 	routes.RegisterApartmentRoutes(r)
 	routes.RegisterListingRoutes(r)
+	routes.LoginRoutes(r)
 
 	http.Handle("/", r)
-  
+
 	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
+
 }
