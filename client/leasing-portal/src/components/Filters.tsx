@@ -1,4 +1,3 @@
-import Header from "./Header";
 
 const filterOptions = {
   locations: ["Gainesville", "Santa Fe", "Alachua"],
@@ -31,7 +30,7 @@ function Filters() {
                             <div className="icon">
                               <i className="bi bi-caret-down-fill"></i>
                             </div>
-                            <select name="" id="" className="form-control">
+                            <select name="locations" id="locations" data-testid="locationsSelect" className="form-control">
                               {filterOptions.locations.map((a) => (
                                 <option key={a} value={a}>
                                   {a}
@@ -50,7 +49,7 @@ function Filters() {
                             <div className="icon">
                               <i className="bi bi-caret-down-fill"></i>
                             </div>
-                            <select name="" id="" className="form-control">
+                            <select name="type" id="ptype" data-testid="propTypesSelect" className="form-control">
                               {filterOptions.type.map((a) => (
                                 <option key={a} value={a}>
                                   {a}
@@ -69,7 +68,7 @@ function Filters() {
                             <div className="icon">
                               <i className="bi bi-caret-down-fill"></i>
                             </div>
-                            <select name="" id="" className="form-control">
+                            <select name="prices" id="prices" data-testid="pricesSelect" className="form-control">
                               {filterOptions.prices.map((a) => (
                                 <option key={a} value={a}>
                                   {a}
