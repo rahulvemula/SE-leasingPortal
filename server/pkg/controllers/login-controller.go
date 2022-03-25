@@ -18,7 +18,12 @@ type Credentials struct {
 
 type Claims struct {
 	Username string `json:"username"`
+	Name     string `json:"name"`
 	jwt.StandardClaims
+}
+
+type Payload struct {
+	Token string `json:"token"`
 }
 
 func LoginUser(w http.ResponseWriter, r *http.Request) {
@@ -42,6 +47,7 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 	// Create the JWT claims, which includes the username and expiry time
 	claims := &Claims{
 		Username: creds.Username,
+		Name:     user.Name,
 		StandardClaims: jwt.StandardClaims{
 			// In JWT, the expiry time is expressed as unix milliseconds
 			ExpiresAt: expirationTime.Unix(),
@@ -57,10 +63,41 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	http.SetCookie(w, &http.Cookie{
-		Name:    "token",
-		Value:   tokenString,
-		Expires: expirationTime,
-	})
+	// instead of setting cookie, send token to FE
 
+	data := make(map[string]string)
+	data["token"] = tokenString
+	res, _ := json.Marshal(data)
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(res)
+}
+
+func IsAuthorized(endpoint func(http.ResponseWriter, *http.Request)) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+		tknStr := r.Header.Get("token")
+
+		claims := &Claims{}
+		tkn, err := jwt.ParseWithClaims(tknStr, claims, func(token *jwt.Token) (interface{}, error) {
+			return jwtKey, nil
+		})
+
+		if err != nil {
+			if err == jwt.ErrSignatureInvalid {
+				w.WriteHeader(http.StatusUnauthorized)
+				return
+			}
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		if !tkn.Valid {
+			w.WriteHeader(http.StatusUnauthorized)
+			return
+		}
+
+		// if authorized return to the function
+		endpoint(w, r)
+	})
 }

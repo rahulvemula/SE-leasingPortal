@@ -8,9 +8,9 @@ import (
 
 var RegisterUserRoutes = func(router *mux.Router) {
 	router.HandleFunc("/users", controllers.CreateUser).Methods("POST")
-	router.HandleFunc("/users", controllers.GetUser).Methods("GET")
-	//router.HandleFunc("/book/{bookId}", controllers.GetBookById).Methods("GET")
-	router.HandleFunc("/users/{userId}", controllers.UpdateUser).Methods("PUT")
-	router.HandleFunc("/users/{userId}", controllers.DeleteUser).Methods("DELETE")
-	router.HandleFunc("/users/{email}", controllers.GetUserByEmail).Methods("GET")
+	router.Handle("/users", controllers.IsAuthorized(controllers.GetUser)).Methods("GET")
+	//router.Handle("/book/{bookId}", controllers.GetBookById).Methods("GET")
+	router.Handle("/users/{userId}", controllers.IsAuthorized(controllers.UpdateUser)).Methods("PUT")
+	router.Handle("/users/{userId}", controllers.IsAuthorized(controllers.DeleteUser)).Methods("DELETE")
+	router.Handle("/users/{email}", controllers.IsAuthorized(controllers.GetUserByEmail)).Methods("GET")
 }
