@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import ApptListing from './pages/ApptListing';
 import Done from './pages/done';
 import AboutUs from './components/AboutUs/AboutUs';
+import Upload from './components/UploadImage/UploadImage';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/appts" element={<ApptListing />} />
           <Route path="/done" element={<Done />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/upload" element={<Upload/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
