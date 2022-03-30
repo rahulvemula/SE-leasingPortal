@@ -36,6 +36,7 @@ func main() {
 	routes.RegisterApartmentRoutes(r)
 	routes.RegisterListingRoutes(r)
 	routes.LoginRoutes(r)
+	routes.RegisterComplaintRoutes(r)
 
 	http.Handle("/", r)
 
