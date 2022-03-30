@@ -14,6 +14,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 //import Account from "./pages/Account";
 import Upload from './components/UploadImage/UploadImage';
 import Account from "./pages/Accounts";
+import Listing from "./pages/Listing";
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -50,6 +51,7 @@ function App() {
             <Route path="/upload" element={<Upload/>} />
             {/* <Route path="/account" element = {<Account/>} /> */}
             <Route path="/account" element = {<Account/>} />
+            <Route path="/listing/:id" element = {<Listing/>} />
           </Routes>
           <Footer />
         </BrowserRouter>
