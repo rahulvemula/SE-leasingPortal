@@ -45,7 +45,7 @@ function Listing() {
     if(!isChecked){
       alert("Please agree to terms and conditions!")
     } else
-      navigate('/done');
+      navigate('/lease-confirmation');
     // axios
     //   .post("https://murmuring-earth-87031.herokuapp.com/users", leaseData)
     //   .then((response)=>{
