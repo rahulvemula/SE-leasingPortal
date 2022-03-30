@@ -22,7 +22,7 @@ function PropertyCard (props: any) {
                     </span>
                 </p>
                 <h3 className="mb-0">
-                    <a href="properties-single.html">{props.label}</a>
+                    <a href={"listing/"+props.id}>{props.label}</a>
                 </h3>
                 <ul className="property_list">
                     <li>
