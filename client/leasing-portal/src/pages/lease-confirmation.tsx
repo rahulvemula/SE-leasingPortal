@@ -1,51 +1,65 @@
 import "../index.css";
-import html2canvas from "html2canvas";
-import {jsPDF} from "jspdf";
-// import InvoiceGenerator from "../utils/leaseDocGenerator";
+import { jsPDF } from "jspdf";
+
+interface Details {
+  [key: string]: any;
+}
 
 function Done() {
+  let message = "Congratulations! Welcome to the society!";
+  let detailText = "Please find the lease details below";
 
-    let exportPdf = () => {
-        let t : HTMLElement = document.querySelector(".msg") as HTMLElement;
-        html2canvas(t).then(canvas => {
-           document.body.appendChild(canvas);  // if you want see your screenshot in body.
-           const imgData = canvas.toDataURL('image/png');
-           const pdf = new jsPDF("l");
-           pdf.addImage(imgData, 'PNG', 0, 0, 300, 200);
-           pdf.save("download.pdf"); 
-       });
-   
-    }
+  
+  let details: Details = {
+    Name: "Lahari",
+    Email: "lbarad@blahblah.com",
+    "Property Name": "The Niche Student Appts",
+    "Lease start date": "03/29/2022",
+    "Lease end date": "03/29/2023",
+  };
 
+  let exportPdf = () => {
+    var doc = new jsPDF("p", "pt", "letter");
+    doc.text("HOUS.", 40, 40).setFontSize(20).setFont("bold");
+
+    doc.text(message, 150, 100).setFontSize(15);
+    doc.setFontSize(12);
+    doc.text(detailText, 150, 150);
+
+    let topPadding = 200;
+    Object.keys(details).forEach((key) => {
+      doc.text(key, 150, topPadding).setFont("bold");
+      doc.text(details[key], 300, topPadding);
+      topPadding = topPadding + 50;
+    });
+
+    doc.save("Lease-Document.pdf");
+  };
 
   return (
-      <div>
-    <div className="msg">
-      <h3>Congratulations! Welcome to the society!</h3>
+    <div>
+      <div className="msg">
+        <h3>{message}</h3>
 
-      <div>&nbsp;&nbsp;Please find the lease details below</div>
-
-      <div className="grid-container ">
-        <div className="grid-item"><strong>Name</strong></div>
-        <div className="grid-item">Lahari</div>
-
-        <div className="grid-item">Email</div>
-        <div className="grid-item">lbarad@blahblah.com</div>
-
-        <div className="grid-item">Property Name</div>
-        <div className="grid-item">The Niche Student Appts</div>
-
-        <div className="grid-item">Lease start date</div>
-        <div className="grid-item">03/29/2022</div>
-
-        <div className="grid-item">Lease end date</div>
-        <div className="grid-item">03/29/2023</div>
+        <div>&nbsp;&nbsp;{detailText}</div>
+        <div className="grid-container ">
+          {Object.keys(details).map((key) => {
+            return (
+              <>
+                <div className="grid-item">
+                  <strong>{key}</strong>
+                </div>
+                <div className="grid-item">{details[key]}</div>
+              </>
+            );
+          })}
+        </div>
+        <br />
       </div>
-      <br />
-      
-    </div>
-    <div className="text-center">
-        <button className="btn btn-primary" onClick={exportPdf}>Print</button>
+      <div className="text-center">
+        <button className="btn btn-primary" onClick={exportPdf}>
+          Print Document
+        </button>
       </div>
       <br />
     </div>
