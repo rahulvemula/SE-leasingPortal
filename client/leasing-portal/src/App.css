@@ -2309,6 +2309,7 @@ fieldset:disabled a.btn {
 .nav-link:hover,
 .nav-link:focus {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .nav-link.disabled {
@@ -3423,7 +3424,7 @@ h4,
 
 .ftco-navbar-light {
   background: transparent !important;
-  position: absolute;
+  position: absolute !important;
   top: 20px;
   left: 0;
   right: 0;

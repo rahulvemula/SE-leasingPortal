@@ -1,0 +1,537 @@
+diff --git a/client/leasing-portal/package.json b/client/leasing-portal/package.json
+index 4fab5c5..4a33546 100644
+--- a/client/leasing-portal/package.json
++++ b/client/leasing-portal/package.json
+@@ -26,7 +26,7 @@
+   "scripts": {
+     "start": "react-scripts start",
+     "build": "react-scripts build",
+-    "test": "react-scripts test",
++    "test": "react-scripts test ./test",
+     "eject": "react-scripts eject"
+   },
+   "eslintConfig": {
+diff --git a/client/leasing-portal/src/App.tsx b/client/leasing-portal/src/App.tsx
+index 24aeea3..a3e468e 100644
+--- a/client/leasing-portal/src/App.tsx
++++ b/client/leasing-portal/src/App.tsx
+@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
+ import "bootstrap/dist/css/bootstrap.min.css";
+ import AboutUs from './components/AboutUs/AboutUs';
+ import Account from "./pages/Accounts";
++import Listing from "./pages/Listing";
+ 
+ function App() {
+   return (
+@@ -44,6 +45,7 @@ function App() {
+             <Route path="/done" element={<Done />} />
+             <Route path="/aboutus" element={<AboutUs />} />
+             <Route path="/account" element = {<Account/>} />
++            <Route path="/listing/:id" element = {<Listing/>} />
+           </Routes>
+           <Footer />
+         </BrowserRouter>
+diff --git a/client/leasing-portal/src/components/Property-Card.tsx b/client/leasing-portal/src/components/Property-Card.tsx
+index 10b52a5..383f6ac 100644
+--- a/client/leasing-portal/src/components/Property-Card.tsx
++++ b/client/leasing-portal/src/components/Property-Card.tsx
+@@ -4,7 +4,7 @@ function PropertyCard (props: any) {
+         <div className="property-wrap ">
+             <div className="img d-flex align-items-center justify-content-center"
+                 style={{
+-                    backgroundImage: `url(images/${props.img}.webp)`,
++                    backgroundImage: `url(/images/${props.img}.webp)`,
+                 }}>
+                 <div className="list-agent d-flex align-items-center">
+                     <a href="/done" className="agent-info d-flex align-items-center">
+@@ -22,7 +22,7 @@ function PropertyCard (props: any) {
+                     </span>
+                 </p>
+                 <h3 className="mb-0">
+-                    <a href="properties-single.html">{props.label}</a>
++                    <a href={"listing/"+props.id}>{props.label}</a>
+                 </h3>
+                 <ul className="property_list">
+                     <li>
+diff --git a/client/leasing-portal/src/components/auth/Login.tsx b/client/leasing-portal/src/components/auth/Login.tsx
+index 30f7f1c..a76fb1a 100644
+--- a/client/leasing-portal/src/components/auth/Login.tsx
++++ b/client/leasing-portal/src/components/auth/Login.tsx
+@@ -9,17 +9,16 @@ function Login() {
+   const [modal, setModal] = useState(false);
+   const dispatch = useDispatch();
+   const defaultData = {
+-    email: "",
++    username: "",
+     password: "",
+   };
+   const mockUserData = {
+     name: "R",
+     email: "R",
+-    username: "R"
+-  }
++    username: "R",
++  };
+   const [userData, setUserData] = useState(defaultData);
+ 
+- 
+   let showSpinner = false;
+ 
+   // Toggle for Modal
+@@ -29,35 +28,49 @@ function Login() {
+     dispatch(loginSuccessful());
+   };
+   const updateEmail = (email: string) => {
+-    setUserData({ ...userData, email });
++    setUserData({ ...userData, username: email });
+   };
+   const updatePassword = (password: string) => {
+     setUserData({ ...userData, password });
+   };
+   const updateStateWithUserData = (userData: any) => {
+     dispatch(updateUserData(userData));
+-  }
+-
++  };
+ 
+   //TO-DO: Add login api and handle success and failure cases
+   const login = () => {
+     showSpinner = true;
+-    
+-    axios.get(`https://murmuring-earth-87031.herokuapp.com/users/${userData.email}`).then((res) => {
+-      if(res.data.ID != 0) {
+-        authenticateUser();
+-        const userResponse = {name: res.data.Name, email: res.data.Email, password: res.data.Password};
+-        updateStateWithUserData(userResponse);
+-      } else {
+-        // TO-DO: this needs to be handled in catch
+-        alert('Auth failed'); 
+-      }
+-    }).finally(() => {
+-      setModal(false);
+-      showSpinner = false;
+-    })
+-
+ 
++    axios
++      .post(`https://murmuring-earth-87031.herokuapp.com/login`, userData)
++      .then((res) => {
++        debugger;
++        console.log(res.data);
++        authenticateUser();
++      })
++      .then(() => {
++        axios
++          .get(
++            `https://murmuring-earth-87031.herokuapp.com/users/${userData.username}`
++          )
++          .then((res) => {
++            if (res.data.ID != 0) {
++              const userResponse = {
++                name: res.data.Name,
++                email: res.data.Email,
++                password: res.data.Password,
++              };
++              updateStateWithUserData(userResponse);
++            } else {
++              // TO-DO: this needs to be handled in catch
++              alert("Auth failed");
++            }
++          });
++      })
++      .finally(() => {
++        setModal(false);
++        showSpinner = false;
++      });
+ 
+     // axios
+     //   .post("http://localhost:9010/user/", userData)
+@@ -72,7 +85,6 @@ function Login() {
+     // authenticateUser();
+     // updateStateWithUserData(mockUserData);
+     // setUserData(defaultData);
+-    
+   };
+ 
+   return (
+@@ -90,7 +102,6 @@ function Login() {
+           modalTransition={{ timeout: 2 }}
+         >
+           <ModalBody id="login-form">
+-           
+             <div className="form-group">
+               <label>Email address</label>
+               <input
+@@ -116,25 +127,27 @@ function Login() {
+                 }}
+               />
+             </div>
+-            <div className="text-center"> {
+-              showSpinner ?  
+-              <button className="btn btn-primary" type="button" disabled>
+-              <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+-              &nbsp;Logging...
+-            </button>
+-              :
+-              <button
+-                id="loginSubmit"
+-                className="btn btn-primary"
+-                onClick={login}
+-              >
+-                Login
+-              </button>
+-              
+-            }
+-              
++            <div className="text-center">
++              {" "}
++              {showSpinner ? (
++                <button className="btn btn-primary" type="button" disabled>
++                  <span
++                    className="spinner-grow spinner-grow-sm"
++                    role="status"
++                    aria-hidden="true"
++                  ></span>
++                  &nbsp;Logging...
++                </button>
++              ) : (
++                <button
++                  id="loginSubmit"
++                  className="btn btn-primary"
++                  onClick={login}
++                >
++                  Login
++                </button>
++              )}
+             </div>
+-         
+           </ModalBody>
+         </Modal>
+       </div>
+diff --git a/client/leasing-portal/src/pages/ApptListing.tsx b/client/leasing-portal/src/pages/ApptListing.tsx
+index 9a7cd40..ee24233 100644
+--- a/client/leasing-portal/src/pages/ApptListing.tsx
++++ b/client/leasing-portal/src/pages/ApptListing.tsx
+@@ -6,56 +6,64 @@ function ApptListing() {
+             label: 'Full house - 4bhk',
+             rent: 2509,
+             sqft: 2400,
+-            img: 'House1'
++            img: 'House1',
++            id: 1
+     
+         },
+         {
+             label: 'Full house - 3bhk',
+             rent: 1500,
+             sqft: 1800,
+-            img: 'House2'
++            img: 'House2',
++            id: 2,
+     
+         },
+         {
+             label: 'Single room in 3 Bed 2 Bath (Shared)',
+             rent: 509,
+             sqft: 400,
+-            img: '3bhk'
++            img: '3bhk',
++            id: 3
+     
+         },
+         {
+             label: '3 Bed 2 Bath (Private)',
+             rent: 549,
+             sqft: 400,
+-            img: '3bhk'
++            img: '3bhk',
++            id:4
+     
+         },
+         {
+             label: '4 Bed 3 Bath (Shared)',
+             rent: 449,
+             sqft: 350,
+-            img: '4bhk'
++            img: '4bhk',
++            id:5
+     
+         },
+         {
+             label: '4 Bed 3 Bath (Private)',
+             rent: 489,
+             sqft: 350,
+-            img: '4bhk'
++            img: '4bhk',
++            id:6
+     
+         },
+         {
+             label: '4 Bed 4 Bath (Personal)',
+             rent: 469,
+             sqft: 350,
+-            img: '4bhkP'
++            img: '4bhkP',
++            id:7
+     
+         },
+         {
+             label: '4 Bed 4 Bath (Private)',
+             rent: 469,
+             sqft: 350,
+-            img: '4bhkP'
++            img: '4bhkP',
++            id:8
+     
+         }
+ 
+diff --git a/client/leasing-portal/src/pages/Listing.tsx b/client/leasing-portal/src/pages/Listing.tsx
+new file mode 100644
+index 0000000..c32f5ee
+--- /dev/null
++++ b/client/leasing-portal/src/pages/Listing.tsx
+@@ -0,0 +1,159 @@
++import axios from "axios";
++import { useState } from "react";
++import { useNavigate, useParams } from "react-router-dom";
++import PropertyCard from "../components/Property-Card";
++
++
++function Listing() {
++  let testData = {
++    label: "Full house - 4bhk",
++    rent: 2509,
++    sqft: 2400,
++    img: "House1",
++    id: 1,
++  };
++
++  const defaultData = {
++    email: "",
++    name: "",
++    startDate: "",
++    endDate: "",
++  };
++
++  const navigate = useNavigate();
++  const [leaseData, setLeaseData] = useState(defaultData);
++
++  const updateName = (name: string) => {
++    setLeaseData({ ...leaseData, name });
++  };
++  const updateEmail = (email: string) => {
++    setLeaseData({ ...leaseData, email });
++  };
++  const updatestartDate = (startDate: string) => {
++    setLeaseData({ ...leaseData, startDate });
++  };
++  const updateEndDate = (endDate: string) => {
++    setLeaseData({ ...leaseData, endDate });
++  };
++  const [isChecked, setIsChecked] = useState(false);
++
++  const handleOnChange = () => {
++    setIsChecked(!isChecked);
++  };
++
++  const createLease = () => {
++    if(!isChecked){
++      alert("Please agree to terms and conditions!")
++    } else
++      navigate('/done');
++    // axios
++    //   .post("https://murmuring-earth-87031.herokuapp.com/users", leaseData)
++    //   .then((response)=>{
++    //     if(response.status == 200){
++    //       navigate('/done');
++    //     }
++    //   })
++    //   .finally(() => {
++    //     setLeaseData(defaultData);
++    //   });
++  };
++
++  let { id } = useParams();
++
++  return (
++    <section className="ftco-section goto-here">
++      <div className="container">
++        <div className="row" style={{margin:"15px"}}>
++          <div className="col-md-1"></div>
++          <div className="col-md-5">
++            <div id="register-form">
++              <div className="form-group">
++                <label>Name</label>
++                <input
++                  type="text"
++                  id="registerInputName"
++                  className="form-control"
++                  aria-describedby="nameHelp"
++                  placeholder="John"
++                  value={leaseData.name}
++                  onChange={(e) => {
++                    updateName(e.target.value);
++                  }}
++                />
++              </div>
++              <div className="form-group">
++                <label>Email address</label>
++                <input
++                  id="registerInputEmail"
++                  type="email"
++                  className="form-control"
++                  aria-describedby="emailHelp"
++                  placeholder="johndoe@example.com"
++                  value={leaseData.email}
++                  onChange={(e) => {
++                    updateEmail(e.target.value);
++                  }}
++                />
++              </div>
++              <div className="form-group">
++                <label>Start date</label>
++                <input
++                  id="registerInputPassword"
++                  type="date"
++                  className="form-control"
++                  placeholder="Password"
++                  value={leaseData.startDate}
++                  onChange={(e) => {
++                    updatestartDate(e.target.value);
++                  }}
++                />
++              </div>
++              <div className="form-group">
++                <label>End date</label>
++                <input
++                  id="registerInputPassword"
++                  type="date"
++                  className="form-control"
++                  placeholder="Password"
++                  value={leaseData.endDate}
++                  onChange={(e) => {
++                    updateEndDate(e.target.value);
++                  }}
++                />
++              </div>
++              <div className="topping">
++                <input
++                  type="checkbox"
++                  id="topping"
++                  name="topping"
++                  value="Paneer"
++                  checked={isChecked}
++                  onChange={handleOnChange}
++                  style={{marginTop:"15px"}}
++                />
++                 <span style={{marginLeft:"5px"}}>Agree to all Terms and Conditions</span>
++              </div>
++            </div>
++            <div className="text-center">
++              <button
++                id="registerSubmit"
++                className="btn btn-primary"
++                onClick={createLease}
++                style={{margin:"35px"}}
++              >
++                Generate Lease Document
++              </button>
++            </div>
++          </div>
++          <div className="col-md-1"></div>
++          <div className="col-md-4">
++            <PropertyCard {...testData}></PropertyCard>
++          </div>
++          <div className="col-md-1"></div>
++        </div>
++      </div>
++    </section>
++  );
++}
++
++export default Listing;
+diff --git a/client/leasing-portal/src/test/Footer.test.tsx b/client/leasing-portal/src/test/Footer.test.tsx
+index 9657f8e..6e32c2d 100644
+--- a/client/leasing-portal/src/test/Footer.test.tsx
++++ b/client/leasing-portal/src/test/Footer.test.tsx
+@@ -1,33 +1,58 @@
+-import React from 'react';
+-import { render, screen } from '@testing-library/react';
+-import Footer from '../components/Footer';
++import React from "react";
++import { render, screen } from "@testing-library/react";
++import Footer from "../components/Footer";
++import { BrowserRouter } from "react-router-dom";
+ 
+-test('renders Hous logo', () => {
+-  render(<Footer />);
+-  const housElement = screen.getByText('Hous.');
++test("renders Hous logo", () => {
++  render(
++    <BrowserRouter>
++      <Footer />
++    </BrowserRouter>
++  );
++
++  const housElement = screen.getByText("Hous.");
+   expect(housElement).toBeInTheDocument();
+ });
+ 
+-test('renders community heading', () => {
+-  render(<Footer />);
+-  const communityElement = screen.getByText('Community');
++test("renders community heading", () => {
++  render(
++    <BrowserRouter>
++      <Footer />
++    </BrowserRouter>
++  );
++
++  const communityElement = screen.getByText("Community");
+   expect(communityElement).toBeInTheDocument();
+ });
+ 
+-test('renders About us links', () => {
+-  render(<Footer />);
+-  const aboutUsElement = screen.getByText('Our Story');
++test("renders About us links", () => {
++  render(
++    <BrowserRouter>
++      <Footer />
++    </BrowserRouter>
++  );
++  const aboutUsElement = screen.getByText("Our Story");
+   expect(aboutUsElement).toBeInTheDocument();
+-  const teamElement = screen.getByText('Meet the team');
+-  expect(teamElement).toBeInTheDocument();
++  // const teamElement = screen.getByText('About Us');
++  // expect(teamElement).toBeInTheDocument();
+ });
+-test('renders company heading', () => {
+-  render(<Footer />);
+-  const companyElement = screen.getByText('Company');
++test("renders company heading", () => {
++  render(
++    <BrowserRouter>
++      <Footer />
++    </BrowserRouter>
++  );
++
++  const companyElement = screen.getByText("Company");
+   expect(companyElement).toBeInTheDocument();
+ });
+-test('renders Questions heading', () => {
+-  render(<Footer />);
+-  const qElement = screen.getByText('Have Questions?');
++test("renders Questions heading", () => {
++  render(
++    <BrowserRouter>
++      <Footer />
++    </BrowserRouter>
++  );
++
++  const qElement = screen.getByText("Have Questions?");
+   expect(qElement).toBeInTheDocument();
+-});
+\ No newline at end of file
++});
