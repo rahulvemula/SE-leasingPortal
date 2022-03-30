@@ -7,7 +7,7 @@ function PropertyCard (props: any) {
                     backgroundImage: `url(images/${props.img}.webp)`,
                 }}>
                 <div className="list-agent d-flex align-items-center">
-                    <a href="/done" className="agent-info d-flex align-items-center">
+                    <a href="/lease-confirmation" className="agent-info d-flex align-items-center">
                         <div
                             className="img-2 rounded-circle"
                             style={{backgroundImage:"url(images/xperson_1.jpg.pagespeed.ic.a2MnMHMs44.webp)",}}
