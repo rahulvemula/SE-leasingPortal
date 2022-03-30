@@ -47,12 +47,9 @@ function App() {
             <Route path="/appts" element={<ApptListing />} />
             <Route path="/done" element={<Done />} />
             <Route path="/aboutus" element={<AboutUs />} />
-<<<<<<< HEAD
             <Route path="/upload" element={<Upload/>} />
             {/* <Route path="/account" element = {<Account/>} /> */}
-=======
             <Route path="/account" element = {<Account/>} />
->>>>>>> 95cc2ac (feat: add account page to show user details)
           </Routes>
           <Footer />
         </BrowserRouter>
