@@ -36,7 +36,7 @@ func GetComplaintById(Id int64) (*Complaint, *gorm.DB) {
 	return &getComplaint, cdb
 }
 
-func GetComplaintsByUser(Id int64) []Complaint {
+func GetComplaintsByUserId(Id int64) []Complaint {
 	var Complaints []Complaint
 	cdb.Where("user_id = ?", Id).Find(&Complaints)
 	return Complaints
