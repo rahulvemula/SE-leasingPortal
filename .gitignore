@@ -1,3 +1,4 @@
 .DS_Store
 
 /server/easylease.db
+/server/cmd/main/easylease.db
