@@ -14,6 +14,8 @@ type Listing struct {
 	Rent        int64  `json: "rent"`
 	UserId      int64  `json: "userId"`
 	Isleased    bool   `gorm:"default:false" json: "isleased"`
+	ListingImg  string `json: "listingImg"`
+	SocietyId   string `json: "societyId"`
 }
 
 func init() {
