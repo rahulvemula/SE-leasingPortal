@@ -39,7 +39,7 @@ func main() {
 	routes.RegisterComplaintRoutes(r)
 
 	http.Handle("/", r)
-
+	// log.Fatal(http.ListenAndServe("localhost:9010", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
 	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
 
 }
