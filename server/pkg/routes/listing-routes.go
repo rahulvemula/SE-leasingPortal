@@ -6,9 +6,9 @@ import (
 )
 
 var RegisterListingRoutes = func(router *mux.Router) {
-	router.Handle("/listings", controllers.IsAuthorized(controllers.CreateListing)).Methods("POST")
-	router.Handle("/listings", controllers.IsAuthorized(controllers.GetListing)).Methods("GET")
-	router.Handle("/listings/{listingId}", controllers.IsAuthorized(controllers.GetListingById)).Methods("GET")
-	router.Handle("/listings/{listingId}", controllers.IsAuthorized(controllers.UpdateListing)).Methods("PUT")
-	router.Handle("/listings/{listingId}", controllers.IsAuthorized(controllers.DeleteListing)).Methods("DELETE")
+	router.HandleFunc("/listings", controllers.CreateListing).Methods("POST")
+	router.HandleFunc("/listings", controllers.GetListing).Methods("GET")
+	router.HandleFunc("/listings/{listingId}", controllers.GetListingById).Methods("GET")
+	router.HandleFunc("/listings/{listingId}", controllers.UpdateListing).Methods("PUT")
+	router.HandleFunc("/listings/{listingId}", controllers.DeleteListing).Methods("DELETE")
 }
