@@ -9,6 +9,6 @@ var RegisterComplaintRoutes = func(router *mux.Router) {
 	router.Handle("/complaints", controllers.IsAuthorized(controllers.CreateComplaint)).Methods("POST")
 	router.Handle("/complaints", controllers.IsAuthorized(controllers.GetComplaints)).Methods("GET")
 	router.Handle("/complaints/{complaintId}", controllers.IsAuthorized(controllers.GetComplaintById)).Methods("GET")
-	router.Handle("/complaints/{userId}", controllers.IsAuthorized(controllers.GetComplaintsByUser)).Methods("GET")
+	router.Handle("/complaints/user/{userId}", controllers.IsAuthorized(controllers.GetComplaintsByUser)).Methods("GET")
 	router.Handle("/complaints/{complaintId}", controllers.IsAuthorized(controllers.DeleteApartment)).Methods("DELETE")
 }

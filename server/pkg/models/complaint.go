@@ -9,7 +9,7 @@ var cdb *gorm.DB
 
 type Complaint struct {
 	gorm.Model
-	UserId      int64  `json: "userId"`
+	UserId      int64  `gorm:""json: "userId"`
 	Description string `json: "description"`
 }
 

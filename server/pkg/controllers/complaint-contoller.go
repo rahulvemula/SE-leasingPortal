@@ -8,7 +8,6 @@ import (
 	"strconv"
 
 	"github.com/common/easy-lease/pkg/models"
-	"github.com/common/easy-lease/pkg/utils"
 	"github.com/gorilla/mux"
 )
 
@@ -40,9 +39,14 @@ func GetComplaintById(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateComplaint(w http.ResponseWriter, r *http.Request) {
-	CreateComplaint := &models.Complaint{}
-	utils.ParseBody(r, CreateComplaint)
-	complaint := CreateComplaint.CreateComplaint()
+	c := &models.Complaint{}
+	err := json.NewDecoder(r.Body).Decode(&c)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	complaint := c.CreateComplaint()
 	res, _ := json.Marshal(complaint)
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
@@ -51,13 +55,13 @@ func CreateComplaint(w http.ResponseWriter, r *http.Request) {
 
 func DeleteComplaint(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	societyId := vars["societyId"]
-	ID, err := strconv.ParseInt(societyId, 0, 0)
+	complaintId := vars["complaintId"]
+	ID, err := strconv.ParseInt(complaintId, 0, 0)
 	if err != nil {
 		fmt.Println("error while parsing")
 	}
-	society := models.DeleteSociety(ID)
-	res, _ := json.Marshal(society)
+	complaint := models.DeleteComplaint(ID)
+	res, _ := json.Marshal(complaint)
 	w.Header().Set("Content-Type", "pkglication/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
