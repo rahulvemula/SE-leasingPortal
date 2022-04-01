@@ -5,7 +5,7 @@ function PropertyCard (props: any) {
         <div className="property-wrap ">
             <div className="img d-flex align-items-center justify-content-center"
                 style={{
-                    backgroundImage: `url(images/${props.img}.webp)`,
+                    backgroundImage: `url(/images/${props.img}.webp)`,
                 }}>
                 <div className="list-agent d-flex align-items-center">
                     <Link to={"/listing/"+props.id} className="agent-info d-flex align-items-center">
