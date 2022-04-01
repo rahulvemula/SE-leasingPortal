@@ -39,7 +39,7 @@ function Done() {
   return (
     <div>
       <div className="msg">
-        <h3>{message}</h3>
+        <h3 id="confirmation-msg">{message}</h3>
 
         <div>&nbsp;&nbsp;{detailText}</div>
         <div className="grid-container ">
@@ -57,7 +57,7 @@ function Done() {
         <br />
       </div>
       <div className="text-center">
-        <button className="btn btn-primary" onClick={exportPdf}>
+        <button id="print-doc" className="btn btn-primary" onClick={exportPdf}>
           Print Document
         </button>
       </div>
