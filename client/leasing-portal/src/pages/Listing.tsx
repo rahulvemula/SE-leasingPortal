@@ -98,7 +98,7 @@ function Listing() {
               <div className="form-group">
                 <label>Start date</label>
                 <input
-                  id="registerInputPassword"
+                  id="registerInputStartDate"
                   type="date"
                   className="form-control"
                   placeholder="Password"
@@ -111,7 +111,7 @@ function Listing() {
               <div className="form-group">
                 <label>End date</label>
                 <input
-                  id="registerInputPassword"
+                  id="registerInputEndDate"
                   type="date"
                   className="form-control"
                   placeholder="Password"
@@ -124,7 +124,7 @@ function Listing() {
               <div className="topping">
                 <input
                   type="checkbox"
-                  id="topping"
+                  id="terms-checkbox"
                   name="topping"
                   value="Paneer"
                   checked={isChecked}

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 function Properties() {
   // const navigate = useNavigate();
   return (
-    <section className="ftco-section" id="properties">
+    <section className="ftco-section" id="properties" data-testid="properties">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-12 heading-section text-center mb-5">

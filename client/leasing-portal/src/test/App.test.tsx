@@ -8,10 +8,10 @@ test('renders Hous logo', () => {
   expect(housElement).toBeInTheDocument();
 });
 
-test('renders login and register buttons', () => {
-  render(<App />);
-  const loginElement = screen.getByText('Login');
-  expect(loginElement).toBeInTheDocument();
-  const registerElement = screen.getByText('Register');
-  expect(registerElement).toBeInTheDocument();
-});
+// test('renders login and register buttons', () => {
+//   render(<App />);
+//   const loginElement = screen.getByText('Login');
+//   expect(loginElement).toBeInTheDocument();
+//   const registerElement = screen.getByText('Register');
+//   expect(registerElement).toBeInTheDocument();
+// });
