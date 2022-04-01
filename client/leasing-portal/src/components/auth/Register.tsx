@@ -21,10 +21,15 @@ function Register() {
     setUserData({ ...userData, password });
   };
   const register = () => {
-    axios.post("https://murmuring-earth-87031.herokuapp.com/users", userData).finally(() => {
-      setUserData(defaultData);
-      setModal(false);
-    });
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/users`, userData)
+      .then((res) => {
+        alert("Your account has been created.");
+      })
+      .finally(() => {
+        setUserData(defaultData);
+        setModal(false);
+      });
   };
 
   // Toggle for Modal

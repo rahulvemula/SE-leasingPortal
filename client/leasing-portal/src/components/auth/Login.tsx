@@ -1,63 +1,76 @@
 import { useState } from "react";
 import { Modal, ModalBody } from "reactstrap";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { loginSuccessful } from "../../store/auth";
 import { updateUserData } from "../../store/userData";
 
 function Login() {
   const [modal, setModal] = useState(false);
+  //const [token, setToken] = useState('');
+  const userToken = useSelector((state: any) => state.isAuthenticated.usertoken);
   const dispatch = useDispatch();
   const defaultData = {
-    email: "",
+    username: "",
     password: "",
   };
   const mockUserData = {
     name: "R",
     email: "R",
-    username: "R"
-  }
+    username: "R",
+  };
   const [userData, setUserData] = useState(defaultData);
 
- 
   let showSpinner = false;
 
   // Toggle for Modal
   const toggle = () => setModal(!modal);
 
-  const authenticateUser = () => {
-    dispatch(loginSuccessful());
+  const authenticateUser = (response: any) => {
+    dispatch(loginSuccessful(response));
   };
   const updateEmail = (email: string) => {
-    setUserData({ ...userData, email });
+    setUserData({ ...userData, username: email });
   };
   const updatePassword = (password: string) => {
     setUserData({ ...userData, password });
   };
   const updateStateWithUserData = (userData: any) => {
     dispatch(updateUserData(userData));
-  }
-
+  };
 
   //TO-DO: Add login api and handle success and failure cases
   const login = () => {
     showSpinner = true;
-    
-    axios.get(`https://murmuring-earth-87031.herokuapp.com/users/${userData.email}`).then((res) => {
-      if(res.data.ID != 0) {
-        authenticateUser();
-        const userResponse = {name: res.data.Name, email: res.data.Email, password: res.data.Password};
-        updateStateWithUserData(userResponse);
-      } else {
-        // TO-DO: this needs to be handled in catch
-        alert('Auth failed'); 
-      }
-    }).finally(() => {
-      setModal(false);
-      showSpinner = false;
-    })
 
-
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/login`, userData)
+      .then((res) => {
+        // debugger;
+        //console.log(res.data);
+        authenticateUser(res.data);
+        axios
+          .get(
+            `${process.env.REACT_APP_API_URL}/users/${userData.username}`, {headers : {token: res.data.token}}
+          )
+          .then((res) => {
+            if (res.data.ID != 0) {
+              const userResponse = {
+                name: res.data.Name,
+                email: res.data.Email,
+                password: res.data.Password,
+              };
+              updateStateWithUserData(userResponse);
+            } else {
+              // TO-DO: this needs to be handled in catch
+              alert("Auth failed");
+            }
+          });
+      })
+      .finally(() => {
+        setModal(false);
+        showSpinner = false;
+      });
 
     // axios
     //   .post("http://localhost:9010/user/", userData)
@@ -72,7 +85,6 @@ function Login() {
     // authenticateUser();
     // updateStateWithUserData(mockUserData);
     // setUserData(defaultData);
-    
   };
 
   return (
@@ -90,7 +102,6 @@ function Login() {
           modalTransition={{ timeout: 2 }}
         >
           <ModalBody id="login-form">
-           
             <div className="form-group">
               <label>Email address</label>
               <input
@@ -116,25 +127,27 @@ function Login() {
                 }}
               />
             </div>
-            <div className="text-center"> {
-              showSpinner ?  
-              <button className="btn btn-primary" type="button" disabled>
-              <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-              &nbsp;Logging...
-            </button>
-              :
-              <button
-                id="loginSubmit"
-                className="btn btn-primary"
-                onClick={login}
-              >
-                Login
-              </button>
-              
-            }
-              
+            <div className="text-center">
+              {" "}
+              {showSpinner ? (
+                <button className="btn btn-primary" type="button" disabled>
+                  <span
+                    className="spinner-grow spinner-grow-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  &nbsp;Logging...
+                </button>
+              ) : (
+                <button
+                  id="loginSubmit"
+                  className="btn btn-primary"
+                  onClick={login}
+                >
+                  Login
+                </button>
+              )}
             </div>
-         
           </ModalBody>
         </Modal>
       </div>
