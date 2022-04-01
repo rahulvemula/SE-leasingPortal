@@ -25,7 +25,7 @@ function Properties() {
                 <h3>
                   <Link to="/appts">10 Property Listing</Link>
                 </h3>
-                <Link to="/appts" className="btn-link">
+                <Link to="/appts" className="btn-link" id="see-listings">
                   <span>
                     See All Listings{" "}
                     <i className="bi bi-arrow-right-circle-fill"></i>
