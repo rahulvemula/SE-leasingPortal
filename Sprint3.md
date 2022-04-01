@@ -36,5 +36,5 @@
 
 #### UI Components tests
 ![](Screenshots/ComponentsUnitTestsSprint3.png)
-#### Go lang unit tests
-![Alt text](Screenshots/GoLangUnitTests.png?raw=true "Title")
+#### Go lang unit tests(with complaints and society tests added)
+![Alt text](Screenshots/GoLangUnitTestsSprint3.png?raw=true "Title")
