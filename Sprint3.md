@@ -10,6 +10,13 @@
 
 ## Backend Tasks achieved
 - Added JWT authrorization
+- Integrated our Amazon S3 in our project to support block storage of images
+- Included CRUD rest api's for the Society structure
+- Added Unit tests for the Crud operations of Society class
+- Included CRUD rest api's for the Complaint structure
+- Added Unit tests for the Crud operations of Complaint class
+- Setting up our project in Heroku to support CI/CD(in progress)
+
 
 ## Useful links of the project
 - [Easy-Lease Repo Link](https://github.com/rahulvemula/SE-leasingPortal) 
