@@ -23,7 +23,7 @@ func main() {
 	r := mux.NewRouter()
 
 	corsObj := handlers.AllowedOrigins([]string{"http://localhost:3000"})
-	headersOk := handlers.AllowedHeaders([]string{"accept", "origin", "X-Requested-With", "Content-Type", "Authorization"})
+	headersOk := handlers.AllowedHeaders([]string{"accept", "origin", "X-Requested-With", "Content-Type", "Authorization", "token"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "PUT", "POST", "DELETE", "OPTIONS", "PATCH"})
 	allowCreds := handlers.AllowCredentials()
 	allowOptions := handlers.OptionStatusCode(204)
@@ -36,9 +36,10 @@ func main() {
 	routes.RegisterApartmentRoutes(r)
 	routes.RegisterListingRoutes(r)
 	routes.LoginRoutes(r)
+	routes.RegisterComplaintRoutes(r)
 
 	http.Handle("/", r)
-
+	// log.Fatal(http.ListenAndServe("localhost:9010", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
 	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
 
 }

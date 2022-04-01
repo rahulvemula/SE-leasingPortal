@@ -1,4 +1,4 @@
 .DS_Store
 
-#db file
-./server/easylease.db
+/server/easylease.db
+/server/cmd/main/easylease.db

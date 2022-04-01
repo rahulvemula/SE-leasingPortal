@@ -75,6 +75,8 @@ func UpdateListing(w http.ResponseWriter, r *http.Request) {
 
 	listingDetails, db := models.GetListingById(ID)
 	var listingType string = updateListing.ListingType
+	var societyId string = updateListing.SocietyId
+	var listingImg string = updateListing.ListingImg
 	var houseType string = updateListing.HouseType
 	var rent int64 = updateListing.Rent
 	var userid int64 = updateListing.UserId
@@ -87,7 +89,13 @@ func UpdateListing(w http.ResponseWriter, r *http.Request) {
 	if houseType != "" {
 		listingDetails.HouseType = houseType
 	}
+	if societyId != "" {
+		listingDetails.SocietyId = societyId
+	}
 
+	if listingImg != "" {
+		listingDetails.ListingImg = listingImg
+	}
 	if rent != 0 {
 		listingDetails.Rent = rent
 	}

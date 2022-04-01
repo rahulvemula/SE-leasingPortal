@@ -13,6 +13,25 @@ code {
 }
 
 .msg {
-  padding-top:15%;
-  padding-left: 30%;
+  padding-top:10%;
+  padding-left: 35%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 30px;
+  width: fit-content;
+  column-gap: 65px;
+}
+.grid-item {
+  background-color: white;
+  border: 0px solid rgba(0, 0, 0, 0.8);
+  padding: 11px;
+  font-size: 17px;
+}
+
+.print-button {
+  padding-left: 40%;
+ 
 }

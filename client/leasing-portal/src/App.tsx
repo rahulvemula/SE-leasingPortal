@@ -6,7 +6,7 @@ import Properties from "./components/Properties";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import ApptListing from "./pages/ApptListing";
-import Done from "./pages/done";
+import LeaseConfirmation from "./pages/lease-confirmation";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import AboutUs from './components/AboutUs/AboutUs';
@@ -46,7 +46,7 @@ function App() {
             {/* TO-DO: add route to support page  */}
             <Route path="/support" element={<ApptListing />} />
             <Route path="/appts" element={<ApptListing />} />
-            <Route path="/done" element={<Done />} />
+            <Route path="/lease-confirmation" element={<LeaseConfirmation />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/upload" element={<Upload/>} />
             {/* <Route path="/account" element = {<Account/>} /> */}
