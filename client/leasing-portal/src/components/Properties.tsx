@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 function Properties() {
+  // const navigate = useNavigate();
   return (
     <section className="ftco-section" id="properties">
       <div className="container">
@@ -21,11 +23,14 @@ function Properties() {
               </div>
               <div className="text">
                 <h3>
-                  <a href="/appts">10 Property Listing</a>
+                  <Link to="/appts">10 Property Listing</Link>
                 </h3>
-                <a href="/appts" className="btn-link">
-                  <span>See All Listings{" "}<i className="bi bi-arrow-right-circle-fill"></i></span>
-                </a>
+                <Link to="/appts" className="btn-link">
+                  <span>
+                    See All Listings{" "}
+                    <i className="bi bi-arrow-right-circle-fill"></i>
+                  </span>
+                </Link>
               </div>
             </div>
           </div>
