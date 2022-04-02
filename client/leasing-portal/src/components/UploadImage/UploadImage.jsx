@@ -7,9 +7,9 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 const config = {
     bucketName: 'lease-portal',
     dirName: 'photos', /* optional */
-    region: 'us-east-1',
-    accessKeyId: 'AKIAQNMWHWEJ56BFPLX5',
-    secretAccessKey: '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'
+    region: env.a,
+    accessKeyId: env.b,
+    secretAccessKey:env.c
 }
 
 
