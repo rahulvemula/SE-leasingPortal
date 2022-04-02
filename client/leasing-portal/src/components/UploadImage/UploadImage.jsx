@@ -7,9 +7,9 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 const config = {
     bucketName: 'lease-portal',
     dirName: 'photos', /* optional */
-    region: process.env.REACT_APP_region,
-    accessKeyId: process.env.REACT_APP_accessKeyId,
-    secretAccessKey: process.env.REACT_APP_secretAccessKey
+    region: 'us-east-1',
+    accessKeyId: 'AKIAQNMWHWEJ56BFPLX5',
+    secretAccessKey: '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'
 }
 
 
@@ -36,7 +36,7 @@ class Upload extends Component{
         return(
             <div style={{marginTop : "100px", textAlign: "center"}}>
                 <h3>
-                    Image Upload tool
+                    Image Upload tool via Amazon S3
                 </h3>
                 <input style={{paddingTop: "20px", marginBottom: "20px"}}
                 type="file"

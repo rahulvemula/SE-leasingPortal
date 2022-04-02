@@ -35,11 +35,13 @@ func main() {
 	routes.RegisterLeaseRoutes(r)
 	routes.RegisterApartmentRoutes(r)
 	routes.RegisterListingRoutes(r)
-	routes.LoginRoutes(r)
 	routes.RegisterComplaintRoutes(r)
+	routes.RegisterSocietyRoutes(r)
+	routes.LoginRoutes(r)
 
 	http.Handle("/", r)
-	// log.Fatal(http.ListenAndServe("localhost:9010", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
+
 	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
+	// log.Fatal(http.ListenAndServe("localhost:9010", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
 
 }
