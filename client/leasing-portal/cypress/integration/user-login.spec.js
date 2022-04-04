@@ -13,8 +13,17 @@ describe('Login', () => {
       cy.get('#logout-button').should('be.visible');
     });
 
-    it('Displays User Information', () => {
+    it('Displays My Account page', () => {
         cy.get('#my-account').should('be.visible');
-        cy.get('#my-account').click();
+        cy.get('#my-account').click();        
+    });
+
+    it('Displays User information', () => {
+      cy.get('#info-name').should('be.visible');
+      cy.get('#info-name').should('have.text', 'Test User');
+
+      cy.get('#info-email').should('be.visible');
+      cy.get('#info-email').should('have.text', 'testUser@test.com');
+
     })
 });

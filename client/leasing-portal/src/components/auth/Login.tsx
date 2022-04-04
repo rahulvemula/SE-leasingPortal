@@ -65,7 +65,10 @@ function Login() {
               // TO-DO: this needs to be handled in catch
               alert("Auth failed");
             }
+          }).catch(() => {
           });
+      }).catch(() => {
+        alert("Auth failed, please check your user name and password");
       })
       .finally(() => {
         setModal(false);
