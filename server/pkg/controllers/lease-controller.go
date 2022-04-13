@@ -12,6 +12,15 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// GetLeases godoc
+// @Summary Get details of all leases
+// @Description Get details of all leases
+// @Tags leases
+// @Accept  json
+// @Produce  json
+//@Param token header string true "token header"
+// @Success 200 {array} models.Lease
+// @Router /leases [get]
 func GetLease(w http.ResponseWriter, r *http.Request) {
 	newLeases := models.GetAllLeases()
 	res, _ := json.Marshal(newLeases)
