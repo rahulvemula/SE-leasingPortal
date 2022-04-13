@@ -5,6 +5,10 @@ import (
 	"net/http"
 	"os"
 
+	_ "github.com/common/easy-lease/cmd/main/docs"
+
+	httpSwagger "github.com/swaggo/http-swagger"
+
 	"github.com/common/easy-lease/pkg/routes"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -19,6 +23,16 @@ func RootEndPoint(response http.ResponseWriter, request *http.Request) {
 	response.Write([]byte("Hello World"))
 }
 
+// @title LeasingPortal APIs
+// @version 1.0
+// @description This is a sample service for managing leasing apis
+// @termsOfService http://swagger.io/terms/
+// @contact.name API Support
+// @contact.email soberkoder@swagger.io
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+// @host localhost:8080
+// @BasePath /
 func main() {
 	r := mux.NewRouter()
 
@@ -40,8 +54,8 @@ func main() {
 	routes.LoginRoutes(r)
 
 	http.Handle("/", r)
-
+	r.PathPrefix("/swagger").Handler(httpSwagger.WrapHandler)
 	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
-	// log.Fatal(http.ListenAndServe("localhost:9010", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
+	//log.Fatal(http.ListenAndServe("localhost:9011", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
 
 }

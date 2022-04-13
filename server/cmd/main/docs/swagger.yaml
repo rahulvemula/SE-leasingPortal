@@ -1,0 +1,39 @@
+definitions:
+  controllers.Credentials:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  controllers.Payload:
+    properties:
+      token:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Create a new token with the input paylod
+      parameters:
+      - description: Create token
+        in: body
+        name: creds
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.Credentials'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.Payload'
+      summary: Create a new token
+      tags:
+      - login
+swagger: "2.0"
