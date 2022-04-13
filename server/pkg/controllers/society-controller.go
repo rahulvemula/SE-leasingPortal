@@ -12,6 +12,15 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// GetSocieties godoc
+// @Summary Get details of all societies
+// @Description Get details of all societies
+// @Tags societies
+// @Accept  json
+// @Produce  json
+//@Param token header string true "token header"
+// @Success 200 {array} models.Society
+// @Router /societies [get]
 func GetSociety(w http.ResponseWriter, r *http.Request) {
 	newSocieties := models.GetAllSocieties()
 	res, _ := json.Marshal(newSocieties)

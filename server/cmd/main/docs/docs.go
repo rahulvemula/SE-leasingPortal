@@ -16,6 +16,41 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/complaints": {
+            "get": {
+                "description": "Get details of all complaints",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "complaints"
+                ],
+                "summary": "Get details of all complaints",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Complaint"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/leases": {
             "get": {
                 "description": "Get details of all leases",
@@ -80,6 +115,41 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/controllers.Payload"
+                        }
+                    }
+                }
+            }
+        },
+        "/societies": {
+            "get": {
+                "description": "Get details of all societies",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "societies"
+                ],
+                "summary": "Get details of all societies",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Society"
+                            }
                         }
                     }
                 }
@@ -153,6 +223,29 @@ const docTemplate = `{
                 }
             }
         },
+        "models.Complaint": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer"
+                }
+            }
+        },
         "models.Lease": {
             "type": "object",
             "properties": {
@@ -179,6 +272,38 @@ const docTemplate = `{
                 },
                 "userId": {
                     "type": "integer"
+                }
+            }
+        },
+        "models.Society": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "societyAddress": {
+                    "type": "string"
+                },
+                "societyAmenities": {
+                    "type": "string"
+                },
+                "societyCity": {
+                    "type": "string"
+                },
+                "societyImg": {
+                    "type": "string"
+                },
+                "societyName": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
                 }
             }
         },
