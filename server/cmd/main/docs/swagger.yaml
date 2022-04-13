@@ -19,6 +19,23 @@ definitions:
         description: Valid is true if Time is not NULL
         type: boolean
     type: object
+  models.Apartment:
+    properties:
+      address:
+        type: string
+      amenities:
+        type: string
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+    type: object
   models.Complaint:
     properties:
       createdAt:
@@ -94,6 +111,29 @@ definitions:
 info:
   contact: {}
 paths:
+  /apartments:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all apartments
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Apartment'
+            type: array
+      summary: Get details of all apartments
+      tags:
+      - apartments
   /complaints:
     get:
       consumes:

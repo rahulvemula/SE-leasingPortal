@@ -11,6 +11,15 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// GetComplaints godoc
+// @Summary Get details of all apartments
+// @Description Get details of all apartments
+// @Tags apartments
+// @Accept  json
+// @Produce  json
+//@Param token header string true "token header"
+// @Success 200 {array} models.Apartment
+// @Router /apartments [get]
 func GetApartment(w http.ResponseWriter, r *http.Request) {
 	newApartments := models.GetAllApartments()
 	res, _ := json.Marshal(newApartments)
