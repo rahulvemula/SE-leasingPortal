@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"time"
 
+	_ "github.com/common/easy-lease/cmd/main/docs"
+
 	"github.com/common/easy-lease/pkg/models"
 	"github.com/dgrijalva/jwt-go"
 )
@@ -26,6 +28,15 @@ type Payload struct {
 	Token string `json:"token"`
 }
 
+// LoginUser godoc
+// @Summary Create a new token
+// @Description Create a new token with the input paylod
+// @Tags login
+// @Accept  json
+// @Produce  json
+// @Param creds body Credentials true "Create token"
+// @Success 200 {object} Payload
+// @Router /login [post]
 func LoginUser(w http.ResponseWriter, r *http.Request) {
 	var creds Credentials
 
