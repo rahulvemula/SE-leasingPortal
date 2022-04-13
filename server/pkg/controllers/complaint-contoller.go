@@ -29,6 +29,16 @@ func GetComplaints(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// GetComplaintById godoc
+// @Summary Get details of complaint
+// @Description Get details of complaint
+// @Tags complaints
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param leaseId path string true "complaintId"
+// @Success 200 {array} models.Complaint
+// @Router /complaints/{complaintId} [get]
 func GetComplaintById(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	complaintId := vars["complaintId"]
@@ -47,6 +57,16 @@ func GetComplaintById(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// CreateComplaint godoc
+// @Summary Create complaint
+// @Description Create a new complaint
+// @Tags complaints
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param body body string true "body"
+// @Success 200 {array} models.Complaint
+// @Router /complaints [post]
 func CreateComplaint(w http.ResponseWriter, r *http.Request) {
 	c := &models.Complaint{}
 	err := json.NewDecoder(r.Body).Decode(&c)
@@ -62,6 +82,15 @@ func CreateComplaint(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Delete complaint godoc
+// @Summary Delete complaint
+// @Description Delete the existing complaint
+// @Tags complaints
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Success 200 {array} models.Complaint
+// @Router /complaints/{complaintId} [delete]
 func DeleteComplaint(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	complaintId := vars["complaintId"]
@@ -76,6 +105,16 @@ func DeleteComplaint(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// GetComplaintByUser godoc
+// @Summary Get all complaints of user
+// @Description Get details of complaint made by a specific user
+// @Tags complaints
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param leaseId path string true "userId"
+// @Success 200 {array} models.Complaint
+// @Router /complaints/user/{userId} [get]
 func GetComplaintsByUser(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	userId := vars["userId"]

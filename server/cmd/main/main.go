@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	_ "github.com/common/easy-lease/cmd/main/docs"
 
@@ -43,7 +44,7 @@ func main() {
 
 	r.HandleFunc("/", RootEndPoint).Methods("GET")
 
-	// port := os.Getenv("PORT")
+	port := os.Getenv("PORT")
 	routes.RegisterUserRoutes(r)
 	routes.RegisterLeaseRoutes(r)
 	routes.RegisterApartmentRoutes(r)
@@ -54,7 +55,7 @@ func main() {
 
 	http.Handle("/", r)
 	r.PathPrefix("/swagger").Handler(httpSwagger.WrapHandler)
-	// log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
-	log.Fatal(http.ListenAndServe("localhost:9011", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
+	log.Fatal(http.ListenAndServe(":"+port, handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
+	// log.Fatal(http.ListenAndServe("localhost:9011", handlers.CORS(corsObj, headersOk, methodsOk, allowCreds, allowOptions)(r)))
 
 }

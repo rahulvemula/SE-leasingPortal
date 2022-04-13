@@ -80,7 +80,7 @@ func CreateLease(w http.ResponseWriter, r *http.Request) {
 
 // Delete lease godoc
 // @Summary Delete lease
-// @Description Update the existing lease
+// @Description Delete the existing lease
 // @Tags leases
 // @Accept  json
 // @Produce  json

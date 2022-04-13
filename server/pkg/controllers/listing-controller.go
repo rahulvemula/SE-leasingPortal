@@ -12,6 +12,15 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// GetListing godoc
+// @Summary Get details of all listings
+// @Description Get details of all listings
+// @Tags listings
+// @Accept  json
+// @Produce  json
+//@Param token header string true "token header"
+// @Success 200 {array} models.Listing
+// @Router /listings [get]
 func GetListing(w http.ResponseWriter, r *http.Request) {
 	newListings := models.GetAllListings()
 	res, _ := json.Marshal(newListings)
@@ -21,6 +30,16 @@ func GetListing(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// GetListingById godoc
+// @Summary Get details of listing
+// @Description Get details of the listing
+// @Tags listings
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param leaseId path string true "listingId"
+// @Success 200 {array} models.Listing
+// @Router /listings/{listingId} [get]
 func GetListingById(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	listingId := vars["listingId"]
@@ -39,6 +58,16 @@ func GetListingById(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// CreateListing godoc
+// @Summary Create listings
+// @Description Create a new listing
+// @Tags listings
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param body body string true "body"
+// @Success 200 {array} models.Listing
+// @Router /listings [post]
 func CreateListing(w http.ResponseWriter, r *http.Request) {
 	CreateListing := &models.Listing{}
 	utils.ParseBody(r, CreateListing)
@@ -49,6 +78,15 @@ func CreateListing(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Delete listing godoc
+// @Summary Delete listings
+// @Description Delete the existing lease
+// @Tags listings
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Success 200 {array} models.Listing
+// @Router /listings/{listingId} [delete]
 func DeleteListing(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	listingId := vars["listingId"]
@@ -63,6 +101,16 @@ func DeleteListing(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// Update listing godoc
+// @Summary Update listing
+// @Description Update the existing listing
+// @Tags listings
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param body body string true "body"
+// @Success 200 {array} models.Listing
+// @Router /listings/{listingId} [put]
 func UpdateListing(w http.ResponseWriter, r *http.Request) {
 	var updateListing = &models.Listing{}
 	utils.ParseBody(r, updateListing)
