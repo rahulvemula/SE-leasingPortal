@@ -11,6 +11,31 @@ definitions:
       token:
         type: string
     type: object
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
+  models.User:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      password:
+        type: string
+      updatedAt:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
@@ -36,4 +61,27 @@ paths:
       summary: Create a new token
       tags:
       - login
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all users
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.User'
+            type: array
+      summary: Get details of all users
+      tags:
+      - users
 swagger: "2.0"

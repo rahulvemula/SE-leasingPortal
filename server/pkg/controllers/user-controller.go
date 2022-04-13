@@ -14,6 +14,15 @@ import (
 
 var NewUser models.User
 
+// GetUsers godoc
+// @Summary Get details of all users
+// @Description Get details of all users
+// @Tags users
+// @Accept  json
+// @Produce  json
+//@Param token header string true "token header"
+// @Success 200 {array} models.User
+// @Router /users [get]
 func GetUser(w http.ResponseWriter, r *http.Request) {
 	newUsers := models.GetAllUsers()
 	res, _ := json.Marshal(newUsers)
