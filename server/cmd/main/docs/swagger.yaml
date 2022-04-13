@@ -19,6 +19,25 @@ definitions:
         description: Valid is true if Time is not NULL
         type: boolean
     type: object
+  models.Lease:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      leaseEndDate:
+        type: string
+      leaseStartDate:
+        type: string
+      listingId:
+        type: integer
+      updatedAt:
+        type: string
+      userId:
+        type: integer
+    type: object
   models.User:
     properties:
       createdAt:
@@ -39,6 +58,29 @@ definitions:
 info:
   contact: {}
 paths:
+  /leases:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all leases
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Lease'
+            type: array
+      summary: Get details of all leases
+      tags:
+      - leases
   /login:
     post:
       consumes:
