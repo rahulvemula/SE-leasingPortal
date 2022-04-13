@@ -19,6 +19,21 @@ definitions:
         description: Valid is true if Time is not NULL
         type: boolean
     type: object
+  models.Complaint:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        type: string
+      id:
+        type: integer
+      updatedAt:
+        type: string
+      userId:
+        type: integer
+    type: object
   models.Lease:
     properties:
       createdAt:
@@ -37,6 +52,27 @@ definitions:
         type: string
       userId:
         type: integer
+    type: object
+  models.Society:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      societyAddress:
+        type: string
+      societyAmenities:
+        type: string
+      societyCity:
+        type: string
+      societyImg:
+        type: string
+      societyName:
+        type: string
+      updatedAt:
+        type: string
     type: object
   models.User:
     properties:
@@ -58,6 +94,29 @@ definitions:
 info:
   contact: {}
 paths:
+  /complaints:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all complaints
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Complaint'
+            type: array
+      summary: Get details of all complaints
+      tags:
+      - complaints
   /leases:
     get:
       consumes:
@@ -103,6 +162,29 @@ paths:
       summary: Create a new token
       tags:
       - login
+  /societies:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all societies
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Society'
+            type: array
+      summary: Get details of all societies
+      tags:
+      - societies
   /users:
     get:
       consumes:
