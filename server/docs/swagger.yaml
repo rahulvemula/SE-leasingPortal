@@ -180,6 +180,112 @@ paths:
       summary: Get details of all leases
       tags:
       - leases
+    post:
+      consumes:
+      - application/json
+      description: Create a new lease
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Lease'
+            type: array
+      summary: Create lease
+      tags:
+      - leases
+  /leases/{leaseId}:
+    delete:
+      consumes:
+      - application/json
+      description: Update the existing lease
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Lease'
+            type: array
+      summary: Delete lease
+      tags:
+      - leases
+    get:
+      consumes:
+      - application/json
+      description: Get details of leases
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: leaseId
+        in: path
+        name: leaseId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Lease'
+            type: array
+      summary: Get details lease
+      tags:
+      - leases
+    put:
+      consumes:
+      - application/json
+      description: Update the existing lease
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Lease'
+            type: array
+      summary: Update lease
+      tags:
+      - leases
   /login:
     post:
       consumes:

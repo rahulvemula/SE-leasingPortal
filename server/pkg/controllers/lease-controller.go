@@ -30,6 +30,16 @@ func GetLease(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// GetLeaseById godoc
+// @Summary Get details lease
+// @Description Get details of leases
+// @Tags leases
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param leaseId path string true "leaseId"
+// @Success 200 {array} models.Lease
+// @Router /leases/{leaseId} [get]
 func GetLeaseById(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	leaseId := vars["leaseId"]
@@ -48,6 +58,16 @@ func GetLeaseById(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// CreateLease godoc
+// @Summary Create lease
+// @Description Create a new lease
+// @Tags leases
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param body body string true "body"
+// @Success 200 {array} models.Lease
+// @Router /leases [post]
 func CreateLease(w http.ResponseWriter, r *http.Request) {
 	CreateLease := &models.Lease{}
 	utils.ParseBody(r, CreateLease)
@@ -58,6 +78,15 @@ func CreateLease(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Delete lease godoc
+// @Summary Delete lease
+// @Description Update the existing lease
+// @Tags leases
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Success 200 {array} models.Lease
+// @Router /leases/{leaseId} [delete]
 func DeleteLease(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	leaseId := vars["leaseId"]
@@ -72,6 +101,16 @@ func DeleteLease(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// Update lease godoc
+// @Summary Update lease
+// @Description Update the existing lease
+// @Tags leases
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param body body string true "body"
+// @Success 200 {array} models.Lease
+// @Router /leases/{leaseId} [put]
 func UpdateLease(w http.ResponseWriter, r *http.Request) {
 	var updateLease = &models.Lease{}
 	utils.ParseBody(r, updateLease)
