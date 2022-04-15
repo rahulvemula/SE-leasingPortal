@@ -50,6 +50,16 @@ func GetUserById(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// GetUser godoc
+// @Summary Get details of the user by email
+// @Description Get details of user by email
+// @Tags users
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param email path string true "email"
+// @Success 200 {array} models.User
+// @Router /users/{email} [get]
 func GetUserByEmail(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	email := vars["email"]
@@ -64,6 +74,15 @@ func GetUserByEmail(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Create godoc
+// @Summary Create a new
+// @Description Get a new user
+// @Tags users
+// @Accept  json
+// @Produce  json
+// @Param body body string true "body"
+// @Success 200 {array} models.User
+// @Router /users [post]
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 	CreateUser := &models.User{}
 	utils.ParseBody(r, CreateUser)
@@ -74,6 +93,16 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Delete user godoc
+// @Summary Delete user
+// @Description Delete the existing user
+// @Tags users
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param userId path string true "userId"
+// @Success 200 {array} models.User
+// @Router /users/{userId} [delete]
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	userId := vars["userId"]
@@ -88,6 +117,17 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// Create godoc
+// @Summary Update the new
+// @Description Update the user
+// @Tags users
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param userId path string true "userId"
+// @Param body body string true "body"
+// @Success 200 {array} models.User
+// @Router /users/{userId} [put]
 func UpdateUser(w http.ResponseWriter, r *http.Request) {
 	var updateUser = &models.User{}
 	utils.ParseBody(r, updateUser)
