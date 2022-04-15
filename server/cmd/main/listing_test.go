@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -61,4 +62,33 @@ func TestGetListingById(t *testing.T) {
 	if (listing != models.Listing{}) {
 		assert.Equal(t, 3, int(listing.ID), "ID's should be matched")
 	}
+}
+
+func TestCreateListing(t *testing.T) {
+
+	router := mux.NewRouter()
+
+	router.HandleFunc("/listings", controllers.CreateListing).Methods("POST")
+	var jsonStr = []byte(`{"houseType": "2bhk",
+	"isleased": true,
+	"listingImg": "randomimg",
+	"listingType": "randomtype",
+	"rent": 1000,
+	"societyId": "randomid",
+	"userId": 11}`)
+	request, _ := http.NewRequest("POST", "/listings", bytes.NewBuffer(jsonStr))
+	request.Header.Set("Content-Type", "application/json")
+
+	response := httptest.NewRecorder()
+	router.ServeHTTP(response, request)
+
+	var m map[string]interface{}
+	json.Unmarshal(response.Body.Bytes(), &m)
+
+	fmt.Println(response.Body.String())
+
+	if m["houseType"] != "2bhk" {
+		t.Errorf("Expected product city to be '2bhk'. Got '%v'", m["houseType"])
+	}
+
 }

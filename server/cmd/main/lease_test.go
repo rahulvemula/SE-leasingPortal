@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -60,4 +61,30 @@ func TestGetLeaseById(t *testing.T) {
 	if (lease != models.Lease{}) {
 		assert.Equal(t, 1, int(lease.ID), "ID's should be matched")
 	}
+}
+
+func TestCreateLease(t *testing.T) {
+
+	router := mux.NewRouter()
+
+	router.HandleFunc("/leases", controllers.CreateLease).Methods("POST")
+	var jsonStr = []byte(`{  "leaseEndDate": "20aug2022",
+    "leaseStartDate": "20aug2019",
+    "listingId": 11,
+    "userId": 33}`)
+	request, _ := http.NewRequest("POST", "/leases", bytes.NewBuffer(jsonStr))
+	request.Header.Set("Content-Type", "application/json")
+
+	response := httptest.NewRecorder()
+	router.ServeHTTP(response, request)
+
+	var m map[string]interface{}
+	json.Unmarshal(response.Body.Bytes(), &m)
+
+	fmt.Println(response.Body.String())
+
+	if m["LeaseStartDate"] != "20aug2019" {
+		t.Errorf("Expected lease start date to be '20aug2019'. Got '%v'", m["LeaseStartDate"])
+	}
+
 }
