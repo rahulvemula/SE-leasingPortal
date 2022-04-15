@@ -29,10 +29,10 @@ func TestGetSocieties(t *testing.T) {
 	if err != nil {
 		fmt.Println("err is ", err)
 	}
-
+	//fmt.Println(societies[1].SocietyName)
 	if len(societies) >= 1 {
-		name := societies[1].SocietyName
-		address := societies[1].SocietyAddress
+		name := societies[0].SocietyName
+		address := societies[0].SocietyAddress
 
 		//fmt.Println(startDateNotNull, endDateNotNull)
 		assert.Equal(t, len(name) > 0, true, "Non empty name expected")
