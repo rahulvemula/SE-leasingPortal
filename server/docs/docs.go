@@ -700,6 +700,165 @@ const docTemplate = `{
                         }
                     }
                 }
+            },
+            "post": {
+                "description": "Create a new society",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "societies"
+                ],
+                "summary": "Create society",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Society"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/societies/{societyId}": {
+            "get": {
+                "description": "Get details of the society",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "societies"
+                ],
+                "summary": "Get details of the society",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "societyId",
+                        "name": "societyId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Society"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update the existing society",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "societies"
+                ],
+                "summary": "Update society",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Society"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete the existing society",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "societies"
+                ],
+                "summary": "Delete society",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Society"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/users": {

@@ -591,6 +591,112 @@ paths:
       summary: Get details of all societies
       tags:
       - societies
+    post:
+      consumes:
+      - application/json
+      description: Create a new society
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Society'
+            type: array
+      summary: Create society
+      tags:
+      - societies
+  /societies/{societyId}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete the existing society
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Society'
+            type: array
+      summary: Delete society
+      tags:
+      - societies
+    get:
+      consumes:
+      - application/json
+      description: Get details of the society
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: societyId
+        in: path
+        name: societyId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Society'
+            type: array
+      summary: Get details of the society
+      tags:
+      - societies
+    put:
+      consumes:
+      - application/json
+      description: Update the existing society
+      parameters:
+      - description: token header
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Society'
+            type: array
+      summary: Update society
+      tags:
+      - societies
   /users:
     get:
       consumes:
