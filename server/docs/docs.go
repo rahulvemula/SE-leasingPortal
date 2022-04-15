@@ -29,12 +29,148 @@ const docTemplate = `{
                     "apartments"
                 ],
                 "summary": "Get details of all apartments",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Apartment"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new apartment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "apartments"
+                ],
+                "summary": "Create an apartment",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Apartment"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/apartments/{apartmentId}": {
+            "get": {
+                "description": "Get details of the apartments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "apartments"
+                ],
+                "summary": "Get details of the apartments",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "token header",
-                        "name": "token",
-                        "in": "header",
+                        "description": "apartmentId",
+                        "name": "apartmentId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Apartment"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update the existing apartment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "apartments"
+                ],
+                "summary": "Update apartment",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "apartmentId",
+                        "name": "apartmentId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Apartment"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete the existing apartment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "apartments"
+                ],
+                "summary": "Delete apartment",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "apartmentId",
+                        "name": "apartmentId",
+                        "in": "path",
                         "required": true
                     }
                 ],
@@ -384,6 +520,13 @@ const docTemplate = `{
                         "required": true
                     },
                     {
+                        "type": "string",
+                        "description": "leaseId",
+                        "name": "leaseId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
                         "description": "body",
                         "name": "body",
                         "in": "body",
@@ -700,6 +843,165 @@ const docTemplate = `{
                         }
                     }
                 }
+            },
+            "post": {
+                "description": "Create a new society",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "societies"
+                ],
+                "summary": "Create society",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Society"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/societies/{societyId}": {
+            "get": {
+                "description": "Get details of the society",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "societies"
+                ],
+                "summary": "Get details of the society",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "societyId",
+                        "name": "societyId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Society"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update the existing society",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "societies"
+                ],
+                "summary": "Update society",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Society"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete the existing society",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "societies"
+                ],
+                "summary": "Delete society",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Society"
+                            }
+                        }
+                    }
+                }
             }
         },
         "/users": {
@@ -721,6 +1023,174 @@ const docTemplate = `{
                         "description": "token header",
                         "name": "token",
                         "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Get a new user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create a new",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{email}": {
+            "get": {
+                "description": "Get details of user by email",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get details of the user by email",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "email",
+                        "name": "email",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{userId}": {
+            "put": {
+                "description": "Update the user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Update the new",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "userId",
+                        "name": "userId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete the existing user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Delete user",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token header",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "userId",
+                        "name": "userId",
+                        "in": "path",
                         "required": true
                     }
                 ],

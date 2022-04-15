@@ -30,6 +30,16 @@ func GetSociety(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// GetSocieties godoc
+// @Summary Get details of the society
+// @Description Get details of the society
+// @Tags societies
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param societyId path string true "societyId"
+// @Success 200 {array} models.Society
+// @Router /societies/{societyId} [get]
 func GetSocietyById(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	societyId := vars["societyId"]
@@ -48,6 +58,16 @@ func GetSocietyById(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// CreateScoiety godoc
+// @Summary Create society
+// @Description Create a new society
+// @Tags societies
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param body body string true "body"
+// @Success 200 {array} models.Society
+// @Router /societies [post]
 func CreateSociety(w http.ResponseWriter, r *http.Request) {
 	CreateSociety := &models.Society{}
 	utils.ParseBody(r, CreateSociety)
@@ -58,6 +78,15 @@ func CreateSociety(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Delete society godoc
+// @Summary Delete society
+// @Description Delete the existing society
+// @Tags societies
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Success 200 {array} models.Society
+// @Router /societies/{societyId} [delete]
 func DeleteSociety(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	societyId := vars["societyId"]
@@ -72,6 +101,16 @@ func DeleteSociety(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// Update society godoc
+// @Summary Update society
+// @Description Update the existing society
+// @Tags societies
+// @Accept  json
+// @Produce  json
+// @Param token header string true "token header"
+// @Param body body string true "body"
+// @Success 200 {array} models.Society
+// @Router /societies/{societyId} [put]
 func UpdateSociety(w http.ResponseWriter, r *http.Request) {
 	var updateSociety = &models.Society{}
 	utils.ParseBody(r, updateSociety)

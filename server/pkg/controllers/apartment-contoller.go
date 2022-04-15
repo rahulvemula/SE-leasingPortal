@@ -11,13 +11,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// GetComplaints godoc
+// GetApartments godoc
 // @Summary Get details of all apartments
 // @Description Get details of all apartments
 // @Tags apartments
 // @Accept  json
 // @Produce  json
-//@Param token header string true "token header"
 // @Success 200 {array} models.Apartment
 // @Router /apartments [get]
 func GetApartment(w http.ResponseWriter, r *http.Request) {
@@ -29,6 +28,15 @@ func GetApartment(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// GetApartmentById godoc
+// @Summary Get details of the apartments
+// @Description Get details of the apartments
+// @Tags apartments
+// @Accept  json
+// @Produce  json
+// @Param apartmentId path string true "apartmentId"
+// @Success 200 {array} models.Apartment
+// @Router /apartments/{apartmentId} [get]
 func GetApartmentById(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	apartmentId := vars["apartmentId"]
@@ -47,6 +55,15 @@ func GetApartmentById(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// CreateApartment godoc
+// @Summary Create an apartment
+// @Description Create a new apartment
+// @Tags apartments
+// @Accept  json
+// @Produce  json
+// @Param body body string true "body"
+// @Success 200 {array} models.Apartment
+// @Router /apartments [post]
 func CreateApartment(w http.ResponseWriter, r *http.Request) {
 	createApartment := &models.Apartment{}
 	utils.ParseBody(r, createApartment)
@@ -57,6 +74,15 @@ func CreateApartment(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Delete apartment godoc
+// @Summary Delete apartment
+// @Description Delete the existing apartment
+// @Tags apartments
+// @Accept  json
+// @Produce  json
+// @Param apartmentId path string true "apartmentId"
+// @Success 200 {array} models.Apartment
+// @Router /apartments/{apartmentId} [delete]
 func DeleteApartment(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	apartmentId := vars["apartmentId"]
@@ -71,6 +97,16 @@ func DeleteApartment(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// Update apartment godoc
+// @Summary Update apartment
+// @Description Update the existing apartment
+// @Tags apartments
+// @Accept  json
+// @Produce  json
+// @Param apartmentId path string true "apartmentId"
+// @Param body body string true "body"
+// @Success 200 {array} models.Apartment
+// @Router /apartments/{apartmentId} [put]
 func UpdateApartment(w http.ResponseWriter, r *http.Request) {
 	var updateApartment = &models.Apartment{}
 	utils.ParseBody(r, updateApartment)
