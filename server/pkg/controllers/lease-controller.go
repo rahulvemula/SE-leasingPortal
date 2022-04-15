@@ -108,6 +108,7 @@ func DeleteLease(w http.ResponseWriter, r *http.Request) {
 // @Accept  json
 // @Produce  json
 // @Param token header string true "token header"
+// @Param leaseId path string true "leaseId"
 // @Param body body string true "body"
 // @Success 200 {array} models.Lease
 // @Router /leases/{leaseId} [put]

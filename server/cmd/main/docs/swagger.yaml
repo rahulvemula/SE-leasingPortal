@@ -141,10 +141,50 @@ paths:
       consumes:
       - application/json
       description: Get details of all apartments
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Apartment'
+            type: array
+      summary: Get details of all apartments
+      tags:
+      - apartments
+    post:
+      consumes:
+      - application/json
+      description: Create a new apartment
       parameters:
-      - description: token header
-        in: header
-        name: token
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Apartment'
+            type: array
+      summary: Create an apartment
+      tags:
+      - apartments
+  /apartments/{apartmentId}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete the existing apartment
+      parameters:
+      - description: apartmentId
+        in: path
+        name: apartmentId
         required: true
         type: string
       produces:
@@ -156,7 +196,57 @@ paths:
             items:
               $ref: '#/definitions/models.Apartment'
             type: array
-      summary: Get details of all apartments
+      summary: Delete apartment
+      tags:
+      - apartments
+    get:
+      consumes:
+      - application/json
+      description: Get details of the apartments
+      parameters:
+      - description: apartmentId
+        in: path
+        name: apartmentId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Apartment'
+            type: array
+      summary: Get details of the apartments
+      tags:
+      - apartments
+    put:
+      consumes:
+      - application/json
+      description: Update the existing apartment
+      parameters:
+      - description: apartmentId
+        in: path
+        name: apartmentId
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Apartment'
+            type: array
+      summary: Update apartment
       tags:
       - apartments
   /complaints:
@@ -397,6 +487,11 @@ paths:
       - description: token header
         in: header
         name: token
+        required: true
+        type: string
+      - description: leaseId
+        in: path
+        name: leaseId
         required: true
         type: string
       - description: body

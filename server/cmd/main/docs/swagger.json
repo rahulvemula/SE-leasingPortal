@@ -17,12 +17,148 @@
                     "apartments"
                 ],
                 "summary": "Get details of all apartments",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Apartment"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new apartment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "apartments"
+                ],
+                "summary": "Create an apartment",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Apartment"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/apartments/{apartmentId}": {
+            "get": {
+                "description": "Get details of the apartments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "apartments"
+                ],
+                "summary": "Get details of the apartments",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "token header",
-                        "name": "token",
-                        "in": "header",
+                        "description": "apartmentId",
+                        "name": "apartmentId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Apartment"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update the existing apartment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "apartments"
+                ],
+                "summary": "Update apartment",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "apartmentId",
+                        "name": "apartmentId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Apartment"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete the existing apartment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "apartments"
+                ],
+                "summary": "Delete apartment",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "apartmentId",
+                        "name": "apartmentId",
+                        "in": "path",
                         "required": true
                     }
                 ],
@@ -369,6 +505,13 @@
                         "description": "token header",
                         "name": "token",
                         "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "leaseId",
+                        "name": "leaseId",
+                        "in": "path",
                         "required": true
                     },
                     {
