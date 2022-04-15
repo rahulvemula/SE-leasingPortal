@@ -7,16 +7,16 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 const config = {
     bucketName: 'lease-portal',
     dirName: 'photos', /* optional */
-    region: env.a,
-    accessKeyId: env.b,
-    secretAccessKey:env.c
+    region: "",
+    accessKeyId: "",
+    secretAccessKey:""
 }
 
 
 class Upload extends Component{
    
  
-    /* this upload function takes creds from aws server and uploads
+     /* this upload function takes creds from aws server and uploads
     the images to the Amazon S3 bucket*/
     upload = (e) => {
         console.log(e.target.files[0]);
