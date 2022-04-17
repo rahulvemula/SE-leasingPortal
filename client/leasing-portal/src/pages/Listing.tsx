@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import PropertyCard from "../components/Property-Card";
-
+import {updateLeaseData} from '../store/leaseData';
 
 function Listing() {
   let testData = {
@@ -21,19 +22,29 @@ function Listing() {
   };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [leaseData, setLeaseData] = useState(defaultData);
+
+  const updateStoreData = () => {
+    dispatch(updateLeaseData(leaseData));
+  }
 
   const updateName = (name: string) => {
     setLeaseData({ ...leaseData, name });
+    updateStoreData();
   };
   const updateEmail = (email: string) => {
     setLeaseData({ ...leaseData, email });
+    updateStoreData();
   };
   const updatestartDate = (startDate: string) => {
     setLeaseData({ ...leaseData, startDate });
+    updateStoreData();
   };
   const updateEndDate = (endDate: string) => {
     setLeaseData({ ...leaseData, endDate });
+    console.log(leaseData);
+    updateStoreData();
   };
   const [isChecked, setIsChecked] = useState(false);
 
