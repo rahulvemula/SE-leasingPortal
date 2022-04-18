@@ -1,5 +1,6 @@
 import "../index.css";
 import { jsPDF } from "jspdf";
+import { useSelector } from "react-redux";
 
 interface Details {
   [key: string]: any;
@@ -8,14 +9,14 @@ interface Details {
 function Done() {
   let message = "Congratulations! Welcome to the society!";
   let detailText = "Please find the lease details below";
-
+  const leaseData = useSelector((state: any) => state.leaseData);
   
   let details: Details = {
-    Name: "Lahari",
-    Email: "lbarad@blahblah.com",
+    Name: leaseData.name,
+    Email: leaseData.email,
     "Property Name": "The Niche Student Appts",
-    "Lease start date": "03/29/2022",
-    "Lease end date": "03/29/2023",
+    "Lease start date": leaseData.startDate,
+    "Lease end date": leaseData.endDate,
   };
 
   let exportPdf = () => {
