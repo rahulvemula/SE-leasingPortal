@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import PropertyCard from "../components/Property-Card";
 import {updateLeaseData} from '../store/leaseData';
+import {Link} from 'react-router-dom';
 
 function Listing() {
   let testData = {
@@ -139,7 +140,12 @@ function Listing() {
                   onChange={handleOnChange}
                   style={{marginTop:"15px"}}
                 />
-                 <span style={{marginLeft:"5px"}}>Agree to all Terms and Conditions</span>
+                 <span style={{marginLeft:"5px"}}>Agree to all &nbsp;
+                 <Link to={`/terms`}>
+                  Terms and Conditions
+                 </Link>
+                 
+                 </span>
               </div>
             </div>
             <div className="text-center">
