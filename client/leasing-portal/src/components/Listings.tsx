@@ -15,7 +15,7 @@ function Listings() {
               <div
                 className="img d-flex align-items-center justify-content-center"
                 style={{
-                  backgroundImage: "url(images/house1.webp)",
+                  backgroundImage: "url(images/House1.webp)",
                 }}
               >
                 <a
