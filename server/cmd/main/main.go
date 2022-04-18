@@ -36,7 +36,7 @@ func RootEndPoint(response http.ResponseWriter, request *http.Request) {
 func main() {
 	r := mux.NewRouter()
 
-	corsObj := handlers.AllowedOrigins([]string{"http://localhost:3000", "https://rahulvemula.github.io/", "https://rahulvemula.github.io"})
+	corsObj := handlers.AllowedOrigins([]string{"http://localhost:3000", "https://rahulvemula.github.io/", "https://rahulvemula.github.io", "*"})
 	headersOk := handlers.AllowedHeaders([]string{"accept", "origin", "X-Requested-With", "Content-Type", "Authorization", "token"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "PUT", "POST", "DELETE", "OPTIONS", "PATCH"})
 	allowCreds := handlers.AllowCredentials()
