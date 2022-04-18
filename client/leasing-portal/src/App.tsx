@@ -15,9 +15,11 @@ import AboutUs from './components/AboutUs/AboutUs';
 import Upload from './components/UploadImage/UploadImage';
 import Account from "./pages/Accounts";
 import Listing from "./pages/Listing";
+import Support from './pages/Support';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return (
     <Provider store={store}>
@@ -44,7 +46,7 @@ function App() {
               }
             />
             {/* TO-DO: add route to support page  */}
-            <Route path="/support" element={<ApptListing />} />
+            <Route path="/support" element={<Support />} />
             <Route path="/appts" element={<ApptListing />} />
             <Route path="/lease-confirmation" element={<LeaseConfirmation />} />
             <Route path="/aboutus" element={<AboutUs />} />
