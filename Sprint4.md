@@ -16,8 +16,9 @@
 - Documented all remote server apis
 
 ## BONUS
-
-- Deployed the app UI to remote server
+- Deployed App Url: [web-URL](https://rahulvemula.github.io/SE-leasingPortal/)
+- ### Details
+- Deployed the app UI to remote server using git hub pages
 - Deployed the app backend services to remote server using heroku apis.  
 - Backendservies-domain: [https://murmuring-earth-87031.herokuapp.com/]
 - [Remote-apis-documentation-link](#api-documentation-of-backend-services)         
