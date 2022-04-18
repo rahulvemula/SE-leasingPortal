@@ -22,7 +22,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <BrowserRouter>
+        <BrowserRouter basename="/SE-leasingPortal">
           <Header />
           <Routes>
             <Route
