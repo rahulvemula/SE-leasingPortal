@@ -27,8 +27,8 @@ jobs:
     - name: Install dependencies
       run: |
         cd client/leasing-portal
-        yarn install
-        CI=false yarn build
+        npm install
+        CI=false npm run build
       
     - name: Deploy to gh-pages
       uses: JamesIves/github-pages-deploy-action@releases/v3
