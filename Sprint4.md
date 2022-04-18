@@ -31,13 +31,11 @@
 ## Sprint 4 Demo UI
 
 
-## Sprint 4 Demo backend
+## Backend Demo video(swagger)
+![Alt text](Screenshots/SwaggerDocForBackend.gif?raw=true "Backend demo swagger")
 
 ## Backend GoLang unit tests demo
 ![Alt text](Screenshots/BackendUnitTests.gif?raw=true "Back end Unit tests")
-
-## Backend Documentation/Demo video using swagger
-![Alt text](Screenshots/SwaggerDocForBackend.gif?raw=true "Backend demo swagger")
 
 ## Cypress automation tests Demo
 
