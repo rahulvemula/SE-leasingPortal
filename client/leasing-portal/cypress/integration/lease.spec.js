@@ -3,7 +3,7 @@
 
 describe('Lease', () => {
     it("selects property to get a lease", () => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/SE-leasingPortal')
       cy.get('#see-listings').should('be.visible');
       cy.get('#see-listings').click();
 

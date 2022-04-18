@@ -3,7 +3,7 @@
 
 describe('Login', () => {
     it("succesfully logins a user", () => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3000/SE-leasingPortal')
       cy.get('#login').should('be.visible');
       cy.get('#login').click();
   

@@ -26,27 +26,20 @@ function Listing() {
   const dispatch = useDispatch();
   const [leaseData, setLeaseData] = useState(defaultData);
 
-  const updateStoreData = () => {
-    dispatch(updateLeaseData(leaseData));
-  }
-
   const updateName = (name: string) => {
     setLeaseData({ ...leaseData, name });
-    updateStoreData();
   };
   const updateEmail = (email: string) => {
     setLeaseData({ ...leaseData, email });
-    updateStoreData();
   };
   const updatestartDate = (startDate: string) => {
     setLeaseData({ ...leaseData, startDate });
-    updateStoreData();
   };
   const updateEndDate = (endDate: string) => {
     setLeaseData({ ...leaseData, endDate });
     console.log(leaseData);
-    updateStoreData();
   };
+
   const [isChecked, setIsChecked] = useState(false);
 
   const handleOnChange = () => {
@@ -56,10 +49,14 @@ function Listing() {
   const createLease = () => {
     if(!isChecked){
       alert("Please agree to terms and conditions!")
-    } else
+    } else{
+      dispatch(updateLeaseData(leaseData));
       navigate('/lease-confirmation');
+    }
     // axios
-    //   .post("https://murmuring-earth-87031.herokuapp.com/users", leaseData)
+    // .post(
+      // `${process.env.REACT_APP_API_URL}/users/${userData.username}`, leaseData, {headers : {token: res.data.token}}
+      // )
     //   .then((response)=>{
     //     if(response.status == 200){
     //       navigate('/done');

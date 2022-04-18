@@ -5,7 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import {logoutSuccessful} from '../store/auth';
-import  { useNavigate } from 'react-router-dom'
+import  { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
+import * as ReactDOM from 'react-dom';
 
 function Header() {
   // To-Do: toggle this
@@ -13,10 +15,15 @@ function Header() {
  
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const menuRef = useRef<HTMLInputElement | null>(null);
 
   const logout = () => {
     dispatch(logoutSuccessful());
     navigate("./", {replace: true});
+  }
+
+  const toggleMenu = () => {
+     menuRef.current?.classList.toggle('collapse');
   }
 
   return (
@@ -37,11 +44,12 @@ function Header() {
             aria-controls="ftco-nav"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            onClick={toggleMenu}
           >
             <span className="oi oi-menu"></span> Menu
           </button>
 
-          <div className="collapse navbar-collapse" id="ftco-nav">
+          <div className="collapse navbar-collapse" ref={menuRef} id="ftco-nav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
                 <Link className="nav-link" to="/">

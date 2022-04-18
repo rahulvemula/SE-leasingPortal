@@ -3,7 +3,7 @@
 
 describe('Register', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:3000')
+      cy.visit('http://localhost:3000/SE-leasingPortal')
     })
   
     it("registers a user", () => {
