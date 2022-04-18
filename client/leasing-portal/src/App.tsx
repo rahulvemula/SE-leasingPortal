@@ -15,6 +15,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import Upload from './components/UploadImage/UploadImage';
 import Account from "./pages/Accounts";
 import Listing from "./pages/Listing";
+import Terms from './pages/Terms';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -52,6 +53,7 @@ function App() {
             {/* <Route path="/account" element = {<Account/>} /> */}
             <Route path="/account" element = {<Account/>} />
             <Route path="/listing/:id" element = {<Listing/>} />
+            <Route path="/terms" element = {<Terms/>} />
           </Routes>
           <Footer />
         </BrowserRouter>
