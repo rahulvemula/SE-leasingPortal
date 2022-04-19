@@ -8,7 +8,7 @@ function Terms() {
       <section className="ftco-section goto-here">
         <div className="container">
         
-<div className="text-center"><h4><strong>Property Terms and Conditions</strong><br/></h4></div>
+<div  className="text-center"><h4><span id="tandc"><strong>Property Terms and Conditions</strong></span><br/></h4></div>
 These terms and conditions of use ("Terms" or "Agreement") are a binding contract between Entrata, Inc. ("Entrata", "we", "us", or "our") and you ("you" or "your"). By using the Site, you agree to be bound by these Terms and the end user license agreement, if any, on the ResidentPortalTM or ProspectPortal® Website (the "Site"). If you do not agree to all these Terms, you are not authorized to use the Site. Entrata provides the information and services on the Site to you conditioned upon your acceptance, without modification, of the Terms. This Agreement may change from time to time and it is your responsibility to review them when conducting business herein.
 
 Definitions

@@ -147,7 +147,7 @@ function Listing() {
                   style={{marginTop:"15px"}}
                 />
                  <span style={{marginLeft:"5px"}}>Agree to all &nbsp;
-                 <Link to={`/terms`}>
+                 <Link id="terms" to={`/terms`}>
                   Terms and Conditions
                  </Link>
                  
