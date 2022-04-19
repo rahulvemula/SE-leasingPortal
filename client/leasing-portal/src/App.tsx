@@ -9,22 +9,21 @@ import ApptListing from "./pages/ApptListing";
 import LeaseConfirmation from "./pages/lease-confirmation";
 import { store } from "./store";
 import { Provider } from "react-redux";
-import AboutUs from './components/AboutUs/AboutUs';
+import AboutUs from "./components/AboutUs/AboutUs";
 
-import Upload from './components/UploadImage/UploadImage';
+import Upload from "./components/UploadImage/UploadImage";
 import Account from "./pages/Accounts";
 import Listing from "./pages/Listing";
-import Support from './pages/Support';
-import Terms from './pages/Terms';
+import Support from "./pages/Support";
+import Terms from "./pages/Terms";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  return (
-    <Provider store={store}>
-      <div className="App">
-        <BrowserRouter basename="/SE-leasingPortal">
-          <Header />
+  const Application = () => {
+    return (
+      <>
+         <Header />
           <Routes>
             <Route
               path="*"
@@ -67,6 +66,17 @@ function App() {
             <Route path="/terms" element = {<Terms/>} />
           </Routes>
           <Footer />
+      </>
+    );
+  };
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <BrowserRouter basename="/SE-leasingPortal">
+          <Application/>
+        </BrowserRouter>
+        <BrowserRouter>
+          <Application/>
         </BrowserRouter>
       </div>
     </Provider>
