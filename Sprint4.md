@@ -15,6 +15,16 @@ The functionalities our application provides are as follows:
   A client can register a complaint with the property from the support page
 - **About Us:** 
   Our application also has an About page which tell users about the people responsible.
+  
+  
+## Group Members
+SNO | Name                          | Github username| Type of development|
+--- | -------------                 |:-------------: | :------------------:
+1   | Vamsi Viswanath Bethamsetty   | vamsibvv       | Backend (Go lang)  |
+2   | Rahul Vemula                  | rahulvemula    | Frontend(React)    |
+3   | Lahari Barad                  | lbarad         | Frontend(React)    |
+4   | Mitul Mandaliya               | mitulmandaliya | Backend (Go lang)  |
+
 
 ## UI Tasks achieved
 - Deployed the app to github pages
