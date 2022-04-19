@@ -1,6 +1,13 @@
 # Sprint 4 - Summary of tasks achieved and Bonus
 
 ## UI Tasks achieved
+- Deployed the app to github pages
+- Added a support page to let users register a complaint
+- Added a terms and conditions page, with out accepting these, a lease can not be signed
+- Added lease details to redux store to be able to share between components
+- Added cypress tests for support page and terms and conditions page
+- Added component tests for new components
+- Bug fixes
 
 
 ## Backend Tasks achieved
