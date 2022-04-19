@@ -15,7 +15,7 @@ function Properties() {
             <div
               className="listing-wrap img rounded d-flex align-items-end"
               style={{
-                backgroundImage: "url(SE-leasingPortal/images/Property1.webp)",
+                backgroundImage: "url(images/Property1.webp)",
               }}
             >
               <div className="location">
