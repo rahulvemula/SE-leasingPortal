@@ -14,6 +14,12 @@ import (
 
 var NewUser models.User
 
+type UserPayload struct {
+	Email    string `json: "email"`
+	Name     string `json: "name"`
+	Password string `json: "password"`
+}
+
 // GetUsers godoc
 // @Summary Get details of all users
 // @Description Get details of all users
@@ -80,7 +86,7 @@ func GetUserByEmail(w http.ResponseWriter, r *http.Request) {
 // @Tags users
 // @Accept  json
 // @Produce  json
-// @Param body body string true "body"
+// @Param payload body UserPayload true "payload"
 // @Success 200 {array} models.User
 // @Router /users [post]
 func CreateUser(w http.ResponseWriter, r *http.Request) {
@@ -125,7 +131,7 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
 // @Produce  json
 // @Param token header string true "token header"
 // @Param userId path string true "userId"
-// @Param body body string true "body"
+// @Param payload body UserPayload true "payload"
 // @Success 200 {array} models.User
 // @Router /users/{userId} [put]
 func UpdateUser(w http.ResponseWriter, r *http.Request) {

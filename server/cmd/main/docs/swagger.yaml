@@ -1,4 +1,13 @@
 definitions:
+  controllers.ApartmentPayload:
+    properties:
+      address:
+        type: string
+      amenities:
+        type: string
+      name:
+        type: string
+    type: object
   controllers.Credentials:
     properties:
       password:
@@ -6,9 +15,59 @@ definitions:
       username:
         type: string
     type: object
+  controllers.LeasePayload:
+    properties:
+      leaseEndDate:
+        type: string
+      leaseStartDate:
+        type: string
+      listingId:
+        type: integer
+      userId:
+        type: integer
+    type: object
+  controllers.ListingPayload:
+    properties:
+      houseType:
+        type: string
+      isleased:
+        type: boolean
+      listingImg:
+        type: string
+      listingType:
+        type: string
+      rent:
+        type: integer
+      societyId:
+        type: string
+      userId:
+        type: integer
+    type: object
   controllers.Payload:
     properties:
       token:
+        type: string
+    type: object
+  controllers.SocietyPayload:
+    properties:
+      societyAddress:
+        type: string
+      societyAmenities:
+        type: string
+      societyCity:
+        type: string
+      societyImg:
+        type: string
+      societyName:
+        type: string
+    type: object
+  controllers.UserPayload:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
         type: string
     type: object
   gorm.DeletedAt:
@@ -158,12 +217,12 @@ paths:
       - application/json
       description: Create a new apartment
       parameters:
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.ApartmentPayload'
       produces:
       - application/json
       responses:
@@ -231,12 +290,12 @@ paths:
         name: apartmentId
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.ApartmentPayload'
       produces:
       - application/json
       responses:
@@ -411,12 +470,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.LeasePayload'
       produces:
       - application/json
       responses:
@@ -494,12 +553,12 @@ paths:
         name: leaseId
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.LeasePayload'
       produces:
       - application/json
       responses:
@@ -545,12 +604,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.ListingPayload'
       produces:
       - application/json
       responses:
@@ -623,12 +682,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.ListingPayload'
       produces:
       - application/json
       responses:
@@ -696,12 +755,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.SocietyPayload'
       produces:
       - application/json
       responses:
@@ -774,12 +833,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.SocietyPayload'
       produces:
       - application/json
       responses:
@@ -820,12 +879,12 @@ paths:
       - application/json
       description: Get a new user
       parameters:
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.UserPayload'
       produces:
       - application/json
       responses:
@@ -909,12 +968,12 @@ paths:
         name: userId
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.UserPayload'
       produces:
       - application/json
       responses:
