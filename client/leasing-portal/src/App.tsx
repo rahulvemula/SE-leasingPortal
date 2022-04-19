@@ -23,38 +23,49 @@ function App() {
   const Application = () => {
     return (
       <>
-        <Header />
-        <Routes>
-          <Route
-            path="*"
-            element={
-              <section className="ftco-section">
-                <span>not found</span>
-              </section>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero />
-                <Properties />
-                <Listings />
-              </>
-            }
-          />
+         <Header />
+          <Routes>
+            <Route
+              path="*"
+              element={
+                <section className="ftco-section">
+                  <span>not found</span>
+                </section>
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <>
+                  <Hero />
+                  <Properties />
+                  <Listings />
+                </>
+              }
+            />
 
-          <Route path="/support" element={<Support />} />
-          <Route path="/appts" element={<ApptListing />} />
-          <Route path="/lease-confirmation" element={<LeaseConfirmation />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/upload" element={<Upload />} />
-          {/* <Route path="/account" element = {<Account/>} /> */}
-          <Route path="/account" element={<Account />} />
-          <Route path="/listing/:id" element={<Listing />} />
-          <Route path="/terms" element={<Terms />} />
-        </Routes>
-        <Footer />
+          <Route
+              path="/"
+              element={
+                <>
+                  <Hero />
+                  <Properties />
+                  <Listings />
+                </>
+              }
+            />
+
+            <Route path="/support" element={<Support />} />
+            <Route path="/appts" element={<ApptListing />} />
+            <Route path="/lease-confirmation" element={<LeaseConfirmation />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/upload" element={<Upload/>} />
+            {/* <Route path="/account" element = {<Account/>} /> */}
+            <Route path="/account" element = {<Account/>} />
+            <Route path="/listing/:id" element = {<Listing/>} />
+            <Route path="/terms" element = {<Terms/>} />
+          </Routes>
+          <Footer />
       </>
     );
   };
