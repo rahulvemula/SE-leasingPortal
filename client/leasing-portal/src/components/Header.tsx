@@ -52,7 +52,7 @@ function Header() {
           <div className="collapse navbar-collapse" ref={menuRef} id="ftco-nav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/home">
                   Home
                 </Link>
               </li>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import PropertyCard from "../components/Property-Card";
 import {updateLeaseData} from '../store/leaseData';
@@ -13,6 +13,7 @@ function Listing() {
     sqft: 2400,
     img: "House1",
     id: 1,
+    isListingPage: true
   };
 
   const defaultData = {
@@ -24,20 +25,25 @@ function Listing() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [leaseData, setLeaseData] = useState(defaultData);
+  const storeLeaseData = useSelector((state: any) => state.leaseData);
+  const [leaseData, setLeaseData] = useState(storeLeaseData);
+
 
   const updateName = (name: string) => {
     setLeaseData({ ...leaseData, name });
+    dispatch(updateLeaseData(leaseData)); 
   };
   const updateEmail = (email: string) => {
     setLeaseData({ ...leaseData, email });
+    dispatch(updateLeaseData(leaseData)); 
   };
   const updatestartDate = (startDate: string) => {
     setLeaseData({ ...leaseData, startDate });
+    dispatch(updateLeaseData({ ...leaseData, startDate })); 
   };
   const updateEndDate = (endDate: string) => {
     setLeaseData({ ...leaseData, endDate });
-    console.log(leaseData);
+    dispatch(updateLeaseData({ ...leaseData, endDate })); 
   };
 
   const [isChecked, setIsChecked] = useState(false);

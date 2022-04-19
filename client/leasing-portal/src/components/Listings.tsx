@@ -15,7 +15,7 @@ function Listings() {
               <div
                 className="img d-flex align-items-center justify-content-center"
                 style={{
-                  backgroundImage: "url(images/House1.webp)",
+                  backgroundImage: "url(SE-leasingPortal/images/House1.webp)",
                 }}
               >
                 <a
@@ -30,7 +30,7 @@ function Listings() {
                       className="img-2 rounded-circle"
                       style={{
                         backgroundImage:
-                          "url(images/xperson_1.jpg.pagespeed.ic.a2MnMHMs44.webp)",
+                          "url(SE-leasingPortal/images/xperson_1.jpg.pagespeed.ic.a2MnMHMs44.webp)",
                       }}
                     ></div>
                     <h3 className="mb-0 ml-2">Ben Ford</h3>
