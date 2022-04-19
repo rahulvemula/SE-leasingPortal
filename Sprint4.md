@@ -44,9 +44,7 @@
 
 
 ## Screenshots for unit tests
-
-
-#### UI Components tests
+![Alt text](Screenshots/component-tests.png?raw=true "UI Component tests")
 
 #### Go lang unit tests
 ![Alt text](Screenshots/GoLangUnitTestsSpring4.png?raw=true "Back end Unit tests")
