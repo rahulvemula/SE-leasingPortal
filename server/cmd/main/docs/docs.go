@@ -436,12 +436,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.LeasePayload"
                         }
                     }
                 ],
@@ -527,12 +527,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.LeasePayload"
                         }
                     }
                 ],
@@ -1231,6 +1231,23 @@ const docTemplate = `{
                 },
                 "username": {
                     "type": "string"
+                }
+            }
+        },
+        "controllers.LeasePayload": {
+            "type": "object",
+            "properties": {
+                "leaseEndDate": {
+                    "type": "string"
+                },
+                "leaseStartDate": {
+                    "type": "string"
+                },
+                "listingId": {
+                    "type": "integer"
+                },
+                "userId": {
+                    "type": "integer"
                 }
             }
         },

@@ -12,6 +12,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+type LeasePayload struct {
+	ListingId      int64  `json: "listingId"`
+	UserId         int64  `json: "userId"`
+	LeaseStartDate string `json: "leaseStartDate"`
+	LeaseEndDate   string `json: "leaseEndDate"`
+}
+
 // GetLeases godoc
 // @Summary Get details of all leases
 // @Description Get details of all leases
@@ -65,7 +72,7 @@ func GetLeaseById(w http.ResponseWriter, r *http.Request) {
 // @Accept  json
 // @Produce  json
 // @Param token header string true "token header"
-// @Param body body string true "body"
+// @Param payload body LeasePayload true "payload"
 // @Success 200 {array} models.Lease
 // @Router /leases [post]
 func CreateLease(w http.ResponseWriter, r *http.Request) {
@@ -109,7 +116,7 @@ func DeleteLease(w http.ResponseWriter, r *http.Request) {
 // @Produce  json
 // @Param token header string true "token header"
 // @Param leaseId path string true "leaseId"
-// @Param body body string true "body"
+// @Param payload body LeasePayload true "payload"
 // @Success 200 {array} models.Lease
 // @Router /leases/{leaseId} [put]
 func UpdateLease(w http.ResponseWriter, r *http.Request) {

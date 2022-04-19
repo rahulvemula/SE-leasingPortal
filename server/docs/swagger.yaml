@@ -15,6 +15,17 @@ definitions:
       username:
         type: string
     type: object
+  controllers.LeasePayload:
+    properties:
+      leaseEndDate:
+        type: string
+      leaseStartDate:
+        type: string
+      listingId:
+        type: integer
+      userId:
+        type: integer
+    type: object
   controllers.Payload:
     properties:
       token:
@@ -420,12 +431,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.LeasePayload'
       produces:
       - application/json
       responses:
@@ -503,12 +514,12 @@ paths:
         name: leaseId
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.LeasePayload'
       produces:
       - application/json
       responses:
