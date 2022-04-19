@@ -12,6 +12,16 @@ import (
 	"github.com/gorilla/mux"
 )
 
+type ListingPayload struct {
+	ListingType string `json:"listingType"`
+	HouseType   string `json:"houseType"`
+	Rent        int64  `json: "rent"`
+	UserId      int64  `json: "userId"`
+	Isleased    bool   `json: "isleased"`
+	ListingImg  string `json: "listingImg"`
+	SocietyId   string `json: "societyId"`
+}
+
 // GetListing godoc
 // @Summary Get details of all listings
 // @Description Get details of all listings
@@ -65,7 +75,7 @@ func GetListingById(w http.ResponseWriter, r *http.Request) {
 // @Accept  json
 // @Produce  json
 // @Param token header string true "token header"
-// @Param body body string true "body"
+// @Param payload body ListingPayload true "payload"
 // @Success 200 {array} models.Listing
 // @Router /listings [post]
 func CreateListing(w http.ResponseWriter, r *http.Request) {
@@ -108,7 +118,7 @@ func DeleteListing(w http.ResponseWriter, r *http.Request) {
 // @Accept  json
 // @Produce  json
 // @Param token header string true "token header"
-// @Param body body string true "body"
+// @Param payload body ListingPayload true "payload"
 // @Success 200 {array} models.Listing
 // @Router /listings/{listingId} [put]
 func UpdateListing(w http.ResponseWriter, r *http.Request) {

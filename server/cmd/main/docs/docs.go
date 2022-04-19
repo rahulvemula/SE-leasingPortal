@@ -637,12 +637,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.ListingPayload"
                         }
                     }
                 ],
@@ -721,12 +721,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.ListingPayload"
                         }
                     }
                 ],
@@ -1245,6 +1245,32 @@ const docTemplate = `{
                 },
                 "listingId": {
                     "type": "integer"
+                },
+                "userId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controllers.ListingPayload": {
+            "type": "object",
+            "properties": {
+                "houseType": {
+                    "type": "string"
+                },
+                "isleased": {
+                    "type": "boolean"
+                },
+                "listingImg": {
+                    "type": "string"
+                },
+                "listingType": {
+                    "type": "string"
+                },
+                "rent": {
+                    "type": "integer"
+                },
+                "societyId": {
+                    "type": "string"
                 },
                 "userId": {
                     "type": "integer"

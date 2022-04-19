@@ -26,6 +26,23 @@ definitions:
       userId:
         type: integer
     type: object
+  controllers.ListingPayload:
+    properties:
+      houseType:
+        type: string
+      isleased:
+        type: boolean
+      listingImg:
+        type: string
+      listingType:
+        type: string
+      rent:
+        type: integer
+      societyId:
+        type: string
+      userId:
+        type: integer
+    type: object
   controllers.Payload:
     properties:
       token:
@@ -565,12 +582,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.ListingPayload'
       produces:
       - application/json
       responses:
@@ -643,12 +660,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.ListingPayload'
       produces:
       - application/json
       responses:
