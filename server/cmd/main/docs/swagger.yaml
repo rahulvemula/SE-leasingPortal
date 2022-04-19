@@ -48,6 +48,19 @@ definitions:
       token:
         type: string
     type: object
+  controllers.SocietyPayload:
+    properties:
+      societyAddress:
+        type: string
+      societyAmenities:
+        type: string
+      societyCity:
+        type: string
+      societyImg:
+        type: string
+      societyName:
+        type: string
+    type: object
   gorm.DeletedAt:
     properties:
       time:
@@ -733,12 +746,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.SocietyPayload'
       produces:
       - application/json
       responses:
@@ -811,12 +824,12 @@ paths:
         name: token
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.SocietyPayload'
       produces:
       - application/json
       responses:

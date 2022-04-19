@@ -865,12 +865,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.SocietyPayload"
                         }
                     }
                 ],
@@ -949,12 +949,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.SocietyPayload"
                         }
                     }
                 ],
@@ -1281,6 +1281,26 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.SocietyPayload": {
+            "type": "object",
+            "properties": {
+                "societyAddress": {
+                    "type": "string"
+                },
+                "societyAmenities": {
+                    "type": "string"
+                },
+                "societyCity": {
+                    "type": "string"
+                },
+                "societyImg": {
+                    "type": "string"
+                },
+                "societyName": {
                     "type": "string"
                 }
             }
