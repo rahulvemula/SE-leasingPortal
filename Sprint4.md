@@ -1,5 +1,21 @@
 # Sprint 4 - Summary of tasks achieved and Bonus
 
+## Description of application
+The application leasingPortal is a web application developed using react Js and goLang, which lets customers explore different available housing options and lease one of them.
+The functionalities our application provides are as follows:
+
+- **Register:** For first-timers, the app provides a UI, takes in the user name, email, and password, and creates an account.
+- **Login:**  Once the users are registered, they can log in using email and password. The details are validated using login API.
+- **Property Listing:** Every client, irrespective of registration can browse through all available properties in a given city
+- **Housing Listing:** For a given property, the application lists various types of housing options
+- **Lease:** 
+  - Signing the lease: Once a house is selected, the customer can lease it by providing all required details and accepting the given terms and conditions.
+  - Lease Document: Once the lease is confirmed, a lease document is generated, which can be downloaded in a PDF form
+- **Support:** 
+  A client can register a complaint with the property from the support page
+- **About Us:** 
+  Our application also has an About page which tell users about the people responsible.
+
 ## UI Tasks achieved
 - Deployed the app to github pages
 - Added a support page to let users register a complaint
