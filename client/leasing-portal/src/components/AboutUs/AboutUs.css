@@ -1,15 +1,8 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-  }
   
-  html {
-    box-sizing: border-box;
-  }
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
+  .aboutUsRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow-x: scroll;
   }
 
   *, *:before, *:after {
@@ -17,10 +10,7 @@ body {
   }
   
   .column {
-    float: left;
-    width: 33.3%;
-    margin-bottom: 16px;
-    padding: 0 8px;
+    margin: 10px;
   }
   
   .card {
