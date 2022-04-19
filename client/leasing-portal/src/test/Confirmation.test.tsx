@@ -1,12 +1,20 @@
 import LeaseConfirm from "../pages/lease-confirmation";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 
 test("shows all lease details", () => {
+  const initialState = { leaseData: { name: "lahari" } };
+  const mockStore = configureStore();
+  let store = mockStore(initialState);
+
   render(
-    <BrowserRouter>
-      <LeaseConfirm />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <LeaseConfirm />
+      </BrowserRouter>
+    </Provider>
   );
 
   const nameElement = screen.getByText("Name");
