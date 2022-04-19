@@ -1,7 +1,7 @@
 function Hero() {
     return (
         <>
-            <div className="hero-wrap" style={{ backgroundImage: 'url(images/home_main.webp)', backgroundPosition: '50% 0px' }} data-stellar-background-ratio="0.5">
+            <div className="hero-wrap" style={{ backgroundImage: 'url(SE-leasingPortal/images/home_main.webp)', backgroundPosition: '50% 0px' }} data-stellar-background-ratio="0.5">
                 <div className="overlay"></div>
                 <div className="overlay-2"></div>
                 <div className="container">
