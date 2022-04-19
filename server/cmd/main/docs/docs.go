@@ -55,12 +55,12 @@ const docTemplate = `{
                 "summary": "Create an apartment",
                 "parameters": [
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.ApartmentPayload"
                         }
                     }
                 ],
@@ -132,12 +132,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.ApartmentPayload"
                         }
                     }
                 ],
@@ -1209,6 +1209,20 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "controllers.ApartmentPayload": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "amenities": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
         "controllers.Credentials": {
             "type": "object",
             "properties": {

@@ -1,4 +1,13 @@
 definitions:
+  controllers.ApartmentPayload:
+    properties:
+      address:
+        type: string
+      amenities:
+        type: string
+      name:
+        type: string
+    type: object
   controllers.Credentials:
     properties:
       password:
@@ -158,12 +167,12 @@ paths:
       - application/json
       description: Create a new apartment
       parameters:
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.ApartmentPayload'
       produces:
       - application/json
       responses:
@@ -231,12 +240,12 @@ paths:
         name: apartmentId
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.ApartmentPayload'
       produces:
       - application/json
       responses:
