@@ -1052,12 +1052,12 @@ const docTemplate = `{
                 "summary": "Create a new",
                 "parameters": [
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.UserPayload"
                         }
                     }
                 ],
@@ -1145,12 +1145,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.UserPayload"
                         }
                     }
                 ],
@@ -1301,6 +1301,20 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "societyName": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.UserPayload": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
                     "type": "string"
                 }
             }

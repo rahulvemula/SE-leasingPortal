@@ -61,6 +61,15 @@ definitions:
       societyName:
         type: string
     type: object
+  controllers.UserPayload:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
   gorm.DeletedAt:
     properties:
       time:
@@ -870,12 +879,12 @@ paths:
       - application/json
       description: Get a new user
       parameters:
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.UserPayload'
       produces:
       - application/json
       responses:
@@ -959,12 +968,12 @@ paths:
         name: userId
         required: true
         type: string
-      - description: body
+      - description: payload
         in: body
-        name: body
+        name: payload
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/controllers.UserPayload'
       produces:
       - application/json
       responses:
