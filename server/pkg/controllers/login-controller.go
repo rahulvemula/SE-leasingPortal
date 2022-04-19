@@ -54,7 +54,7 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	expirationTime := time.Now().Add(5 * time.Minute)
+	expirationTime := time.Now().Add(60 * time.Minute)
 	// Create the JWT claims, which includes the username and expiry time
 	claims := &Claims{
 		Username: creds.Username,
