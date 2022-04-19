@@ -35,6 +35,17 @@ function App() {
               }
             />
             <Route
+              path="/home"
+              element={
+                <>
+                  <Hero />
+                  <Properties />
+                  <Listings />
+                </>
+              }
+            />
+
+          <Route
               path="/"
               element={
                 <>
