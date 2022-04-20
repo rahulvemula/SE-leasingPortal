@@ -55,12 +55,12 @@ const docTemplate = `{
                 "summary": "Create an apartment",
                 "parameters": [
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.ApartmentPayload"
                         }
                     }
                 ],
@@ -132,12 +132,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.ApartmentPayload"
                         }
                     }
                 ],
@@ -436,12 +436,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.LeasePayload"
                         }
                     }
                 ],
@@ -527,12 +527,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.LeasePayload"
                         }
                     }
                 ],
@@ -637,12 +637,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.ListingPayload"
                         }
                     }
                 ],
@@ -721,12 +721,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.ListingPayload"
                         }
                     }
                 ],
@@ -865,12 +865,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.SocietyPayload"
                         }
                     }
                 ],
@@ -949,12 +949,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.SocietyPayload"
                         }
                     }
                 ],
@@ -1052,12 +1052,12 @@ const docTemplate = `{
                 "summary": "Create a new",
                 "parameters": [
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.UserPayload"
                         }
                     }
                 ],
@@ -1145,12 +1145,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "body",
-                        "name": "body",
+                        "description": "payload",
+                        "name": "payload",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/controllers.UserPayload"
                         }
                     }
                 ],
@@ -1209,6 +1209,20 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "controllers.ApartmentPayload": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "amenities": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
         "controllers.Credentials": {
             "type": "object",
             "properties": {
@@ -1220,10 +1234,87 @@ const docTemplate = `{
                 }
             }
         },
+        "controllers.LeasePayload": {
+            "type": "object",
+            "properties": {
+                "leaseEndDate": {
+                    "type": "string"
+                },
+                "leaseStartDate": {
+                    "type": "string"
+                },
+                "listingId": {
+                    "type": "integer"
+                },
+                "userId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controllers.ListingPayload": {
+            "type": "object",
+            "properties": {
+                "houseType": {
+                    "type": "string"
+                },
+                "isleased": {
+                    "type": "boolean"
+                },
+                "listingImg": {
+                    "type": "string"
+                },
+                "listingType": {
+                    "type": "string"
+                },
+                "rent": {
+                    "type": "integer"
+                },
+                "societyId": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer"
+                }
+            }
+        },
         "controllers.Payload": {
             "type": "object",
             "properties": {
                 "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.SocietyPayload": {
+            "type": "object",
+            "properties": {
+                "societyAddress": {
+                    "type": "string"
+                },
+                "societyAmenities": {
+                    "type": "string"
+                },
+                "societyCity": {
+                    "type": "string"
+                },
+                "societyImg": {
+                    "type": "string"
+                },
+                "societyName": {
+                    "type": "string"
+                }
+            }
+        },
+        "controllers.UserPayload": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
                     "type": "string"
                 }
             }

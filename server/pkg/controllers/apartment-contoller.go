@@ -11,6 +11,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
+type ApartmentPayload struct {
+	Name      string `json: "name"`
+	Address   string `json: "address"`
+	Amenities string `json: "amenities"`
+}
+
 // GetApartments godoc
 // @Summary Get details of all apartments
 // @Description Get details of all apartments
@@ -61,7 +67,7 @@ func GetApartmentById(w http.ResponseWriter, r *http.Request) {
 // @Tags apartments
 // @Accept  json
 // @Produce  json
-// @Param body body string true "body"
+// @Param payload body ApartmentPayload true "payload"
 // @Success 200 {array} models.Apartment
 // @Router /apartments [post]
 func CreateApartment(w http.ResponseWriter, r *http.Request) {
@@ -104,7 +110,7 @@ func DeleteApartment(w http.ResponseWriter, r *http.Request) {
 // @Accept  json
 // @Produce  json
 // @Param apartmentId path string true "apartmentId"
-// @Param body body string true "body"
+// @Param payload body ApartmentPayload true "payload"
 // @Success 200 {array} models.Apartment
 // @Router /apartments/{apartmentId} [put]
 func UpdateApartment(w http.ResponseWriter, r *http.Request) {

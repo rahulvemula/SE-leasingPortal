@@ -12,6 +12,14 @@ import (
 	"github.com/gorilla/mux"
 )
 
+type SocietyPayload struct {
+	SocietyName      string `json: "societyName"`
+	SocietyAddress   string `json: "societyAddress"`
+	SocietyCity      string `json: "societyCity"`
+	SocietyAmenities string `json: "societyAmenities"`
+	SocietyImg       string `json: "societyImg"`
+}
+
 // GetSocieties godoc
 // @Summary Get details of all societies
 // @Description Get details of all societies
@@ -65,7 +73,7 @@ func GetSocietyById(w http.ResponseWriter, r *http.Request) {
 // @Accept  json
 // @Produce  json
 // @Param token header string true "token header"
-// @Param body body string true "body"
+// @Param payload body SocietyPayload true "payload"
 // @Success 200 {array} models.Society
 // @Router /societies [post]
 func CreateSociety(w http.ResponseWriter, r *http.Request) {
@@ -108,7 +116,7 @@ func DeleteSociety(w http.ResponseWriter, r *http.Request) {
 // @Accept  json
 // @Produce  json
 // @Param token header string true "token header"
-// @Param body body string true "body"
+// @Param payload body SocietyPayload true "payload"
 // @Success 200 {array} models.Society
 // @Router /societies/{societyId} [put]
 func UpdateSociety(w http.ResponseWriter, r *http.Request) {
