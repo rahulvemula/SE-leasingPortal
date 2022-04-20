@@ -49,8 +49,8 @@ SNO | Name                          | Github username| Type of development|
 - Documented all remote server apis
 
 ## BONUS
-- Deployed App Url: [web-URL](https://rahulvemula.github.io/SE-leasingPortal/)
-- ### Details
+- Deployed App Url: [https://rahulvemula.github.io/SE-leasingPortal/](https://rahulvemula.github.io/SE-leasingPortal/)
+### Bonus Details
 - Deployed the app UI to remote server using git hub pages
 - Deployed the app backend services to remote server using heroku apis.  
 - Backendservies-domain: [https://murmuring-earth-87031.herokuapp.com/]
@@ -74,12 +74,12 @@ SNO | Name                          | Github username| Type of development|
 ![Alt text](Screenshots/BackendUnitTests.gif?raw=true "Back end Unit tests")
 
 ## Cypress automation tests Demo
-
+![cypress](Screenshots/finalCypressTests.gif?raw=true)
 
 ## Screenshots for unit tests
 ![Alt text](Screenshots/component-tests.png?raw=true "UI Component tests")
 
-#### Go lang unit tests
+## Go lang unit tests
 ![Alt text](Screenshots/GoLangUnitTestsSpring4.png?raw=true "Back end Unit tests")
 
 ## Api documentation of backend services
