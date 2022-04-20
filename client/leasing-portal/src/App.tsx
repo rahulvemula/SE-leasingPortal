@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Listings from "./components/Listings";
 import Properties from "./components/Properties";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import ApptListing from "./pages/ApptListing";
 import LeaseConfirmation from "./pages/lease-confirmation";
@@ -72,12 +72,12 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <BrowserRouter basename="/SE-leasingPortal">
+        <HashRouter basename="/SE-leasingPortal">
           <Application/>
-        </BrowserRouter>
-        <BrowserRouter>
+        </HashRouter>
+        <HashRouter>
           <Application/>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     </Provider>
   );

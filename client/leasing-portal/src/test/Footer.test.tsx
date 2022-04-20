@@ -1,13 +1,13 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Footer from "../components/Footer";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 test("renders Hous logo", () => {
   render(
-    <BrowserRouter>
+    <HashRouter>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 
   const housElement = screen.getByText("Hous.");
@@ -16,9 +16,9 @@ test("renders Hous logo", () => {
 
 test("renders community heading", () => {
   render(
-    <BrowserRouter>
+    <HashRouter>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 
   const communityElement = screen.getByText("Community");
@@ -27,9 +27,9 @@ test("renders community heading", () => {
 
 test("renders About us links", () => {
   render(
-    <BrowserRouter>
+    <HashRouter>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
   const aboutUsElement = screen.getByText("Our Story");
   expect(aboutUsElement).toBeInTheDocument();
@@ -38,9 +38,9 @@ test("renders About us links", () => {
 });
 test("renders company heading", () => {
   render(
-    <BrowserRouter>
+    <HashRouter>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 
   const companyElement = screen.getByText("Company");
@@ -48,9 +48,9 @@ test("renders company heading", () => {
 });
 test("renders Questions heading", () => {
   render(
-    <BrowserRouter>
+    <HashRouter>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 
   const qElement = screen.getByText("Have Questions?");
