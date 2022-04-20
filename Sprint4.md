@@ -64,8 +64,8 @@ SNO | Name                          | Github username| Type of development|
 - [Sprint 4 User stories progress board link](https://github.com/rahulvemula/SE-leasingPortal/projects/5)
 - [All user stories link](https://github.com/rahulvemula/SE-leasingPortal/issues)
 
-## Sprint 4 Demo UI
-
+## Sprint 4 UI Demo
+![UI Demo](Screenshots/Sprint4UIDemo.gif?raw=true "UI demo")
 
 ## Backend Demo video(swagger)
 ![Alt text](Screenshots/SwaggerDocForBackend.gif?raw=true "Backend demo swagger")
