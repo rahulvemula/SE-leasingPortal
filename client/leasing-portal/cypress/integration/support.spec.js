@@ -3,7 +3,7 @@
 
 describe('Support', () => {
     it("registers a complaint", () => {
-        cy.visit('http://localhost:3000/SE-leasingPortal/support');
+        cy.visit('http://localhost:3000/SE-leasingPortal/#/support');
 
         cy.get('#registerInputName').should('be.visible');
         cy.get('#registerInputName').type('Lahari');
